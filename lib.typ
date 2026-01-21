@@ -12,12 +12,11 @@
       {
         // These show rules are applied to content after ilm's show rules being applied
         show raw: set text(font: ("Noto Sans Mono CJK SC"))
-        set heading(offset: nestoc_obj.heading_offset)
         nestoc_obj.content
       }
     )
   } else {
-    [== #nestoc_obj.title]
+    heading(nestoc_obj.title, depth: heading_offset)
     nestoc_obj.content
   }
 }
