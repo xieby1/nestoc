@@ -1,7 +1,7 @@
 #let nestoc_fn(
   heading_offset: 0,
 ) = (
-title: "孙模块的题目 `grandchild/main.typ`",
+title: [孙模块的题目 `grandchild/main.typ`],
 author: "xieby3",
 heading_offset: heading_offset,
 content: [
