@@ -1,3 +1,4 @@
+#import "../../lib.typ": nestoc
 #let nestoc_fn(
   heading_offset: 0,
 ) = (
@@ -41,5 +42,8 @@ Nestoc 的 `doc/` 目录包含了模块化的文档。
   [一级标题], [三级标题], [三级标题],
   [..], [..], [..]
 )
-
+#{
+  import "./grandchild/lib.typ": nestoc_fn
+  nestoc(nestoc_fn, heading_offset: heading_offset+3)
+}
 ])
