@@ -1,6 +1,4 @@
-// TODO: add doc
 // TODO: add secret levels
-// TODO: add heading levels
 // TODO: API check
 #let nestoc(nestoc_fn, heading_offset: 0) = {
   let nestoc_obj = nestoc_fn(heading_offset: heading_offset)
