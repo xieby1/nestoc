@@ -1,18 +1,24 @@
 // TODO: add doc
 // TODO: add secret levels
 // TODO: add heading levels
-#let template(nestoc_object) = {
+// TODO: API check
+#let template(nestoc_fn) = {
   import "@preview/ilm:1.4.1"
   // These show rules are applied to content before ilm's show rules being applied
   show: set text(font: ("Noto Serif CJK SC", "Noto Color Emoji"))
-  let content = {
-    // These show rules are applied to content after ilm's show rules being applied
-    show raw: set text(font: ("Noto Sans Mono CJK SC"))
-    nestoc_object.content()
-  }
+  let nestoc_obj = nestoc_fn()
   ilm.ilm(
-    title: nestoc_object.title,
-    author: nestoc_object.author,
-    content
+    title: nestoc_obj.title,
+    author: nestoc_obj.author,
+    {
+      // These show rules are applied to content after ilm's show rules being applied
+      show raw: set text(font: ("Noto Sans Mono CJK SC"))
+      set heading(offset: nestoc_obj.heading_offset)
+      nestoc_obj.content
+    }
   )
 }
+
+// #let nest(src, heading_offset:0) = {
+//   import src as 
+// }

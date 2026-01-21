@@ -1,10 +1,10 @@
-#let title = "Nestoc 文档"
-#let author = "xieby1"
-#let content(
+#let nestoc_fn(
   heading_offset: 0,
-) = [
-#set heading(offset: heading_offset)
-
+) = (
+title: "Nestoc 文档",
+author: "xieby1",
+heading_offset: heading_offset,
+content: [
 = Nestoc 简介
 
 🪆Nestoc📑 的名称来源于 Nest（嵌套🪆）与 Doc（文档📑）的组合，亦可理解为 Nest + ToC（Table of Contents 目录）。
@@ -30,4 +30,4 @@ Nestoc 旨在构建一个支持文档嵌套（或称"模块化"）的 Typst 模�
 
 = API 文档
 
-]
+])
