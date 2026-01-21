@@ -27,7 +27,7 @@ Nestoc 的 `doc/` 目录包含了模块化的文档。
   [..], [..]
 )
 
-= 子模块 `capabilities/main.typ`
+== 子模块 `capabilities/main.typ`
 
 该模块被嵌入到顶层模块的一级标题之下，即该模块的最高级标题为二级。
 因此所有的标题等级都会+2。
