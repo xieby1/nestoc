@@ -13,7 +13,7 @@ let
     hash = "sha256-8ITcyjd8x5VZoukv04dr1YU+bm/+58ff1FlWXfQNLzY=";
   }) {};
   noto-fonts-cjk-sc-static = pkgs.callPackage ./noto-fonts-cjk-sc-static.nix {};
-in buildLocalTypstEnv {
+in buildLocalTypstEnv (finalAttrs: {
   src = pkgs.lib.sourceByRegex ./. [".*\.typ$" "^typst.toml$"];
   buildInputs = [pkgs.typst];
   propagatedBuildInputs = [
@@ -22,8 +22,12 @@ in buildLocalTypstEnv {
     pkgs.noto-fonts-color-emoji
   ];
   outputs = ["out" "pdf"];
+  shellHook = ''
+    export TYPST_ROOT=$(realpath .)
+  '';
+  preInstall = finalAttrs.shellHook;
   postInstall = ''
     mkdir $pdf
     ${pkgs.typst}/bin/typst compile main.typ $pdf/main.pdf
   '';
-}
+})
