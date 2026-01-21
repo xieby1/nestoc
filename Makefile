@@ -10,7 +10,7 @@ all: test
 
 test: $(addsuffix .test,${MAIN_PDFs})
 
-%main.pdf.test: %main.pdf docs/check_regex_order.py %main.regex
+%main.pdf.test: %main.pdf doc/check_regex_order.py %main.regex
 	pdftotext $< - | python3 $(filter-out $<,$^)
 
 clean:
