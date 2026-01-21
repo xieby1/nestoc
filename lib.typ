@@ -1,3 +1,6 @@
+// TODO: add doc
+// TODO: add secret levels
+// TODO: add heading levels
 #let template(nestoc_object) = {
   import "@preview/ilm:1.4.1"
   // These show rules are applied to content before ilm's show rules being applied
