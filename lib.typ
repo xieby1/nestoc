@@ -6,16 +6,13 @@
     import "@preview/ilm:1.4.2"
     // These show rules are applied to content before ilm's show rules being applied
     show: set text(font: ("Noto Serif CJK SC", "Noto Color Emoji"))
+    show raw: set text(font: ("Noto Sans Mono CJK SC"))
     ilm.ilm(
       title: nestoc_obj.title,
       author: nestoc_obj.author,
       abstract: if "abstract" in nestoc_obj.keys() {nestoc_obj.abstract} else {none},
-      {
-        // These show rules are applied to content after ilm's show rules being applied
-        show raw: set text(font: ("Noto Sans Mono CJK SC"))
-        nestoc_obj.content
-      },
       raw-text: (use-typst-defaults: true),
+      nestoc_obj.content
     )
   } else {
     // Naturally, it is better to write heading()nestoc_obj.title, depth:0)
