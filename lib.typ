@@ -19,6 +19,8 @@
   )
 }
 
-// #let nest(src, heading_offset:0) = {
-//   import src as 
-// }
+#let nest(nestoc_fn: none, heading_offset: 0) = {
+  let nestoc_obj = nestoc_fn(heading_offset: heading_offset+2)
+  [== #nestoc_obj.title]
+  nestoc_obj.content
+}
