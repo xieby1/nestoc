@@ -1,3 +1,5 @@
+.SECONDARY:
+
 MAIN_TYPs = $(shell find . -name "*main.typ")
 MAIN_PDFs = $(subst .typ,.pdf,${MAIN_TYPs})
 
@@ -8,7 +10,7 @@ all: test
 
 test: $(addsuffix .test,${MAIN_PDFs})
 
-%main.pdf.test: %main.pdf tests/check_regex_order.py %main.regex
+%main.pdf.test: %main.pdf docs/check_regex_order.py %main.regex
 	pdftotext $< - | python3 $(filter-out $<,$^)
 
 clean:
