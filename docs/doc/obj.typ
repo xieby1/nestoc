@@ -1,11 +1,13 @@
 #let title = "Nestoc 文档"
 #let author = "xieby1"
-#let content() = [
+#let content(
+  heading_offset: 0,
+) = [
+#set heading(offset: heading_offset)
 
-= 🪆Nestoc📑 简介
+= Nestoc 简介
 
-
-Nestoc 的名称来源于 Nest（嵌套）与 Doc（文档）的组合，亦可理解为 Nest + ToC（Table of Contents 目录）。
+🪆Nestoc📑 的名称来源于 Nest（嵌套🪆）与 Doc（文档📑）的组合，亦可理解为 Nest + ToC（Table of Contents 目录）。
 Nestoc 旨在构建一个支持文档嵌套（或称"模块化"）的 Typst 模板。
 
 设想一个包含多个章节的大型文档项目，
@@ -16,4 +18,16 @@ Nestoc 旨在构建一个支持文档嵌套（或称"模块化"）的 Typst 模�
 - / 嵌套: 所有章节组合时，标题、编号等元素将自动调整，形成协调一致的最终文档。
 
 *注*：目前 Nestoc 的外观基于 #link("https://github.com/talal/ilm")[ilm] 模板。
+
+// TODO: test
+#{
+  import "../capabilities/obj.typ" as capabilities
+  [== #capabilities.title]
+  capabilities.content(heading_offset: heading_offset+2)
+}
+
+== 使用方法
+
+= API 文档
+
 ]
