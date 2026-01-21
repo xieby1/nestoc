@@ -20,7 +20,6 @@ Nestoc 旨在构建一个支持文档嵌套（或称"模块化"）的 Typst 模�
 
 *注*：目前 Nestoc 的外观基于 #link("https://github.com/talal/ilm")[ilm] 模板。
 
-// TODO: test
 #{
   import "./capabilities/obj.typ" as capabilities
   // TODO: can move `import` expression to `nest` function?
