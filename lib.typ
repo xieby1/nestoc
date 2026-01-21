@@ -18,7 +18,7 @@
     )
   } else {
     heading(nestoc_obj.title, depth: heading_offset)
-    nestoc_obj.abstract
+    if "abstract" in nestoc_obj.keys() {nestoc_obj.abstract} else {none}
     set heading(offset: heading_offset)
     nestoc_obj.content
   }
