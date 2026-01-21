@@ -5,7 +5,8 @@ MAIN_PDFs = $(subst .typ,.pdf,${MAIN_TYPs})
 
 all: test
 
-%main.pdf: %main.typ %lib.typ lib.typ
+#                    find all typ in the same folder
+%main.pdf: %main.typ $(shell find $(<D) -name "*.typ") lib.typ
 	typst compile $< $@
 
 test: $(addsuffix .test,${MAIN_PDFs})
