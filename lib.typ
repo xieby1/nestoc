@@ -9,6 +9,7 @@
     ilm.ilm(
       title: nestoc_obj.title,
       author: nestoc_obj.author,
+      abstract: if "abstract" in nestoc_obj.keys() {nestoc_obj.abstract} else {none},
       {
         // These show rules are applied to content after ilm's show rules being applied
         show raw: set text(font: ("Noto Sans Mono CJK SC"))
@@ -17,6 +18,7 @@
     )
   } else {
     heading(nestoc_obj.title, depth: heading_offset)
+    nestoc_obj.abstract
     nestoc_obj.content
   }
 }
