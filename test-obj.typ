@@ -8,6 +8,15 @@
 def function() {
   看看看看啊看
 }
+
+# TODO: fix the text-based graph
+
+┌───┐
+│   │
+└─┬─┘
+  │
+  ▼
+
 ```
 
 测试 test
