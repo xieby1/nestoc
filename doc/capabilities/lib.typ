@@ -14,6 +14,7 @@ Nestoc 的 `doc/` 目录包含了模块化的文档。
 
 - `doc/main.typ`
   - `capabilities/main.typ`
+    - `grandchild/main.typ`
 
 = 顶层模块 `doc/main.typ`
 
