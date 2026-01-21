@@ -15,6 +15,13 @@ let
   noto-fonts-cjk-sc-static = pkgs.callPackage ./noto-fonts-cjk-sc-static.nix {};
 in buildLocalTypstEnv (finalAttrs: {
   src = pkgs.lib.sourceByRegex ./. [".*\.typ$" "^typst.toml$"];
+
+  # for tests
+  nativeBuildInputs = [
+    pkgs.poppler-utils
+    pkgs.python3
+  ];
+
   buildInputs = [pkgs.typst];
   propagatedBuildInputs = [
     pkgs.typstPackages.ilm
