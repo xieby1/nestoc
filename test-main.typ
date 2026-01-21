@@ -1,3 +1,3 @@
-#import "./lib.typ" as xdoctemplate
-#import "./test-xdoc.typ" as xdoc
-#xdoctemplate.mytemplate(xdoc)
+#import "./lib.typ" as nestoc
+#import "./test-obj.typ" as obj
+#nestoc.template(obj)

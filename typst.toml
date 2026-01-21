@@ -1,4 +1,4 @@
 [package]
-name = "my-typst-template"
+name = "nestoc"
 version = "0.0.1"
 entrypoint = "lib.typ"

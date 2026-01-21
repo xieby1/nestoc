@@ -4,6 +4,12 @@
 
 = m
 
+```python
+def function() {
+  看看看看啊看
+}
+```
+
 测试 test
 
 喵喵呜 miao'miao'wu 5
