@@ -1,4 +1,4 @@
-#import "../../lib.typ" as nestoc
+#import "../../lib.typ": nestoc
 // TODO: renmae obj => ?
 #import "./obj.typ"
-#nestoc.template(obj.nestoc_fn)
+#nestoc(obj.nestoc_fn)

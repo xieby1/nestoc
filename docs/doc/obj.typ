@@ -1,4 +1,4 @@
-#import "../../lib.typ": nest
+#import "../../lib.typ": nestoc
 #let nestoc_fn(
   heading_offset: 0,
 ) = (
@@ -24,8 +24,8 @@ Nestoc 旨在构建一个支持文档嵌套（或称"模块化"）的 Typst 模�
 #{
   import "../capabilities/obj.typ" as capabilities
   // TODO: can move `import` expression to `nest` function?
-  nest(
-    nestoc_fn: capabilities.nestoc_fn,
+  nestoc(
+    capabilities.nestoc_fn,
     heading_offset: heading_offset+2,
   )
 }
