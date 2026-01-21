@@ -17,7 +17,9 @@
       }
     )
   } else {
-    heading(nestoc_obj.title, depth: heading_offset)
+    // Naturally, it is better to write heading()nestoc_obj.title, depth:0)
+    // But depth only support positive integer.
+    heading(nestoc_obj.title, level: heading_offset)
     if "abstract" in nestoc_obj.keys() {nestoc_obj.abstract} else {none}
     set heading(offset: heading_offset)
     nestoc_obj.content
