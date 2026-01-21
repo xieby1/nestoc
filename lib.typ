@@ -19,6 +19,7 @@
   } else {
     heading(nestoc_obj.title, depth: heading_offset)
     nestoc_obj.abstract
+    set heading(offset: heading_offset)
     nestoc_obj.content
   }
 }

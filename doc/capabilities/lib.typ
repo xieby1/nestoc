@@ -9,8 +9,6 @@ abstract: [
 ],
 heading_offset: heading_offset,
 content: [
-#set heading(offset: heading_offset)
-
 Nestoc 的 `doc/` 目录包含了模块化的文档。
 其模块层次如下
 
