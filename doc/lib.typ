@@ -23,7 +23,7 @@ Nestoc 旨在构建一个支持文档嵌套（或称"模块化"）的 Typst 模�
 #{
   // Can move `import` expression to `nestoc` function?
   // No: typsts throw error: "cannot import from user-defined functions".
-  import "./capabilities/obj.typ": nestoc_fn
+  import "./capabilities/lib.typ": nestoc_fn
   nestoc(nestoc_fn, heading_offset: heading_offset+2)
 }
 

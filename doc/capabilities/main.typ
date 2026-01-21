@@ -1,4 +1,3 @@
 #import "../../lib.typ": nestoc
-// TODO: renmae obj => ?
-#import "./obj.typ"
-#nestoc(obj.nestoc_fn)
+#import "./lib.typ": nestoc_fn
+#nestoc(nestoc_fn)

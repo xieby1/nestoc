@@ -1,3 +1,3 @@
-#import "../lib.typ" as nestoc
-#import "./obj.typ"
-#nestoc.nestoc(obj.nestoc_fn)
+#import "../lib.typ": nestoc
+#import "./lib.typ": nestoc_fn
+#nestoc(nestoc_fn)

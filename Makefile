@@ -5,7 +5,7 @@ MAIN_PDFs = $(subst .typ,.pdf,${MAIN_TYPs})
 
 all: test
 
-%main.pdf: %main.typ %obj.typ lib.typ
+%main.pdf: %main.typ %lib.typ lib.typ
 	typst compile $< $@
 
 test: $(addsuffix .test,${MAIN_PDFs})
