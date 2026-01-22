@@ -5,6 +5,7 @@
 title: "Nestoc 文档",
 author: "xieby1",
 abstract: [一个模块+嵌套的Typst文档模板。],
+chapter-pagebreak: false,
 body: [
 = Nestoc 简介
 
@@ -28,9 +29,16 @@ Nestoc 旨在构建一个支持文档嵌套（或称"模块化"）的 Typst 模�
 Nestoc 的 `doc/` 目录包含了模块化的文档。
 其模块层次如下
 
-- `doc/main.typ`
-  - `capabilities/main.typ`
-    - `grandchild/main.typ`
+- 总文档：`./main.typ` => `./parent/main.pdf`
+- 父模块：`./parent/main.typ` => `./parent/main.pdf`
+- 子模块：`./parent/child/main.typ` => `./parent/child/main.pdf`
+- 孙模块：`./parent/child/grandchild/main.typ` => `./parent/child/grandchild/main.pdf`
+
+每个模块均可独立地编辑、编译生成pdf。
+当然每个模块也可以被嵌套到其他模块中，比如grandchild被嵌套到了child里；
+child被嵌套到了parent里；
+parent被嵌套到了这个总文档的下面。
+你可以仔细观察这些pdf文档，然后理解它们间的嵌套关系。
 
 #{
   // Can move `import` expression to `nestoc` function?
@@ -39,7 +47,7 @@ Nestoc 的 `doc/` 目录包含了模块化的文档。
   nestoc(nestoc_fn, heading_offset: heading_offset+2)
 }
 
-== 使用方法
+= 使用方法
 
 = API 文档
 
