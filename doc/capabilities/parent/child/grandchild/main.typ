@@ -1,14 +1,13 @@
-#import "../../../lib.typ": nestoc
+#import "../../../../../lib.typ": nestoc
 #let nestoc_fn(
   heading_offset: 0,
 ) = (
-title: [孙模块的题目 `grandchild/main.typ`],
+title: [孙模块的题目],
 author: "xieby3",
+chapter-pagebreak: false,
 heading_offset: heading_offset,
 body: [
 #set heading(offset: heading_offset)
-
-= 孙模块的一级标题
 
 #table(
   columns: (auto, auto, auto, auto),
@@ -17,5 +16,10 @@ body: [
   [一级标题], [四级标题], [六级标题], [三级标题],
   [..], [..], [..], [..]
 )
+
+= 孙模块的一级标题
+
+孙模块的一级标题下方的内容
+
 ])
 #nestoc(nestoc_fn)
