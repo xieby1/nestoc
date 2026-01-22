@@ -2,8 +2,6 @@
 // TODO: API check
 #let nestoc(nestoc_fn, heading_offset: 0) = {
   let nestoc_obj = nestoc_fn(heading_offset: heading_offset)
-  // TODO: remove heading_offset in nestoc_obj?
-  let _ = nestoc_obj.remove("heading_offset")
   if heading_offset == 0 {
     import "@preview/ilm:1.4.2"
     // These show rules are applied to body before ilm's show rules being applied

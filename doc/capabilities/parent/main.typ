@@ -5,7 +5,6 @@
 title: "父模块的题目",
 author: "xieby1",
 chapter-pagebreak: false,
-heading_offset: heading_offset,
 body: [
 父模块到总文档的各级标题为直接映射：
 

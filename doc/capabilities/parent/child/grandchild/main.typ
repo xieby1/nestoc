@@ -5,10 +5,7 @@
 title: [孙模块的题目],
 author: "xieby3",
 chapter-pagebreak: false,
-heading_offset: heading_offset,
 body: [
-#set heading(offset: heading_offset)
-
 #table(
   columns: (auto, auto, auto, auto),
   table.header([`grandchild/main.typ`], [`capabilities/main.typ`], [`doc/main.typ`], [总文档]),

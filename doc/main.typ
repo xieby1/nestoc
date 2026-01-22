@@ -5,7 +5,6 @@
 title: "Nestoc 文档",
 author: "xieby1",
 abstract: [一个模块+嵌套的Typst文档模板。],
-heading_offset: heading_offset,
 body: [
 = Nestoc 简介
 

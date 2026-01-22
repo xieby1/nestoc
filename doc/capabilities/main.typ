@@ -8,7 +8,6 @@ abstract: [
   用 Nestoc 的文档 `doc/` 作为例子，
   展示 Nestoc 的模块和嵌套的能力。
 ],
-heading_offset: heading_offset,
 body: [
 Nestoc 的 `doc/` 目录包含了模块化的文档。
 其模块层次如下
