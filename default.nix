@@ -31,6 +31,9 @@ in buildLocalTypstEnv (finalAttrs: {
         url = "https://packages.typst.org/preview/${finalAttrs.pname}-${finalAttrs.version}.tar.gz";
         stripRoot = false;
       };
+      prePatch = ''
+        sed -i '/compiler/d' typst.toml
+      '';
     }))
     noto-fonts-cjk-sc-static
     pkgs.noto-fonts-color-emoji
