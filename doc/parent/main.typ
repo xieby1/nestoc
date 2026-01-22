@@ -1,4 +1,4 @@
-#import "../../../lib.typ": nestoc
+#import "../../lib.typ": nestoc
 #let nestoc_fn(
   heading_offset: 0,
 ) = (

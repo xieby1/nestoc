@@ -20,10 +20,22 @@ Nestoc 旨在构建一个支持文档嵌套（或称"模块化"）的 Typst 模�
 
 *注*：目前 Nestoc 的外观基于 #link("https://github.com/talal/ilm")[ilm] 模板。
 
+= Nestoc 能力展示
+
+用 Nestoc 的文档 `doc/` 作为例子，
+展示 Nestoc 的模块和嵌套的能力。
+
+Nestoc 的 `doc/` 目录包含了模块化的文档。
+其模块层次如下
+
+- `doc/main.typ`
+  - `capabilities/main.typ`
+    - `grandchild/main.typ`
+
 #{
   // Can move `import` expression to `nestoc` function?
   // No: typsts throw error: "cannot import from user-defined functions".
-  import "./capabilities/main.typ": nestoc_fn
+  import "./parent/main.typ": nestoc_fn
   nestoc(nestoc_fn, heading_offset: heading_offset+2)
 }
 
