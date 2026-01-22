@@ -5,7 +5,7 @@
 title: [孙模块的题目 `grandchild/main.typ`],
 author: "xieby3",
 heading_offset: heading_offset,
-content: [
+body: [
 #set heading(offset: heading_offset)
 
 = 孙模块的一级标题

@@ -6,7 +6,7 @@ title: "Nestoc 文档",
 author: "xieby1",
 abstract: [一个模块+嵌套的Typst文档模板。],
 heading_offset: heading_offset,
-content: [
+body: [
 = Nestoc 简介
 
 🪆Nestoc📑 的名称来源于 Nest（嵌套🪆）与 Doc（文档📑）的组合，亦可理解为 Nest + ToC（Table of Contents 目录）。
