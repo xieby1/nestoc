@@ -1,4 +1,3 @@
-// TODO: add table index
 // TODO: 自动编号：Listing => 代码块，Table => 表格，Figure => 图
 #import "../lib.typ": nestoc
 #let nestoc_fn(
