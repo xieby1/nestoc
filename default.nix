@@ -22,7 +22,10 @@ in buildLocalTypstEnv (finalAttrs: {
     pkgs.python3
   ];
 
-  buildInputs = [pkgs.typst];
+  buildInputs = [
+    pkgs.typst
+    pkgs.typstPackages.fletcher
+  ];
   propagatedBuildInputs = [
     (pkgs.typstPackages.ilm.overrideAttrs (finalAttrs: prevAttrs: {
       version = "1.4.2";

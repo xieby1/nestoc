@@ -10,6 +10,9 @@
     let body = nestoc_obj.remove("body")
     ilm.ilm(
       raw-text: (use-typst-defaults: true),
+      figure-index: (enabled: true, title: "图索引"),
+      table-index: (enabled: true, title: "表格索引"),
+      listing-index: (enabled: true, title: "代码块索引"),
       ..nestoc_obj, body
     )
   } else {
