@@ -23,9 +23,12 @@
     let body = nestoc_obj.remove("body")
     template(..nestoc_obj, body)
   } else {
-    // Naturally, it is better to write heading()nestoc_obj.title, depth:0)
-    // But depth only support positive integer.
-    heading(nestoc_obj.title, level: heading_offset)
+    grid(columns: (1fr, auto),
+      // Naturally, it is better to write heading(nestoc_obj.title, depth:0)
+      // But depth only support positive integer.
+      heading(nestoc_obj.title, level: heading_offset),
+      text(fill: gray, nestoc_obj.at("author", default: none))
+    )
     nestoc_obj.at("abstract", default: none)
     set heading(offset: heading_offset)
     nestoc_obj.body
