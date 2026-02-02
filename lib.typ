@@ -14,7 +14,7 @@
   let nestoc_obj = nestoc_fn(heading_offset: heading_offset)
   if heading_offset == 0 {
     // These show rules are applied to body before ilm's show rules being applied
-    show: set text(font: ("Noto Serif CJK SC", "Noto Color Emoji"))
+    show: set text(font: ("Noto Serif CJK SC", "Noto Color Emoji"), lang: "zh", region: "cn")
     show raw: set text(font: ("Noto Sans Mono CJK SC"))
     let body = nestoc_obj.remove("body")
     template(..nestoc_obj, body)
