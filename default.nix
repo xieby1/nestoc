@@ -4,7 +4,7 @@ in {
   pkgs ? import sources.nixpkgs {},
   buildLocalTypstEnv ? pkgs.callPackage sources.local-typst-env {},
 }: let
-  noto-fonts-cjk-sc-static = pkgs.callPackage ./noto-fonts-cjk-sc-static.nix {};
+  noto-fonts-cjk-sc-static = pkgs.callPackage ./nix/noto-fonts-cjk-sc-static.nix {};
 in buildLocalTypstEnv (finalAttrs: {
   src = pkgs.lib.sourceByRegex ./. [".*\.typ$" "^typst.toml$"];
 
