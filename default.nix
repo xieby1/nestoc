@@ -35,9 +35,4 @@ in buildLocalTypstEnv (finalAttrs: {
     noto-fonts-cjk-sc-static
     pkgs.noto-fonts-color-emoji
   ];
-  outputs = ["out" "pdf"];
-  postInstall = ''
-    mkdir $pdf
-    ${pkgs.typst}/bin/typst compile main.typ $pdf/main.pdf
-  '';
 })
