@@ -4,7 +4,6 @@
 ) = (
 title: "子模块的题目",
 author: "xieby1",
-chapter-pagebreak: false,
 body: [
 
 子模块被嵌入到父模块的题目之下。

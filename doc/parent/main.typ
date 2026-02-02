@@ -4,7 +4,6 @@
 ) = (
 title: "父模块的题目",
 author: "xieby1",
-chapter-pagebreak: false,
 body: [
 父模块被嵌套到了总文档中，以二级标题为基础。
 即各级标题偏移+2。

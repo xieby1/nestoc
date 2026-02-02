@@ -6,7 +6,6 @@
 title: "Nestoc 文档",
 author: "xieby1",
 abstract: [一个模块+嵌套的Typst文档模板。],
-chapter-pagebreak: false,
 body: [
 // TODO: add to template
 // Line numbering for Raw Text / Code: https://github.com/typst/typst/issues/344

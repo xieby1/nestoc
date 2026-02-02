@@ -4,7 +4,6 @@
 ) = (
 title: [孙模块的题目],
 author: "xieby3",
-chapter-pagebreak: false,
 body: [
 
 孙模块被嵌套到子模块中，当然间接地随着子模块被嵌套到了父模块和总文档中。
