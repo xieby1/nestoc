@@ -61,7 +61,7 @@ parent被嵌套到了这个总文档的下面。
 
 Nestoc的所有功能围绕着函数`nestoc(nestoc_fn, heading_offset:0) => body`函数展开
 
-== `nestoc(nestoc_fn, heading_offset:0, style_template: default_style_template) => body`
+== `nestoc(nestoc_fn, heading_offset:0, template:default_template) => body`
 
 - / 参数`nestoc_fn`: 为函数，其类型为`nestoc_fn(heading_offset:0) => nestoc_obj`：
 - / 参数`heading_offset`: 为int，表示给`nestoc_fn`的题目和标题施加`heading_offset`的偏移。
@@ -69,7 +69,9 @@ Nestoc的所有功能围绕着函数`nestoc(nestoc_fn, heading_offset:0) => body
   - / `heading_offset:0`: 表示不偏移
   - / `heading_offset:1`: 表示`nestoc_fn`题目=>一级标题，`nestoc_fn`的一级标题=>二级标题，...
   - / `heading_offset:2`: 表示`nestoc_fn`题目=>二级标题，`nestoc_fn`的一级标题=>三级标题，...
-- / 参数`template:default_template`: 模板，目前默认模板为修改过的#link("https://github.com/talal/ilm")[ilm] 模板。
+- / 参数`template:default_template`: 模板，其类型为：\
+    `template(title:"", author:"", abstract:[], body) => _body`。
+    目前默认模板为修改过的#link("https://github.com/talal/ilm")[ilm] 模板。
 - / 返回值: 为文档内容
 
 == `nestoc_fn(heading_offset:0) => nestoc_obj`
@@ -80,6 +82,14 @@ Nestoc的所有功能围绕着函数`nestoc(nestoc_fn, heading_offset:0) => body
   - / `author`: 字符串类型，作者
   - / `abstract`: 文档类型，摘要
   - / `body`: 文档内容
+
+== `template(title:"", author:"", abstract:[], body) => _body`
+
+- / 参数`title`: 标题字符串
+- / 参数`author`: 作者字符串
+- / 参数`abstract`: 摘要内容
+- / 参数`body`: 文档内容
+- / 返回值: 应用了模板之后的文档内容
 
 == Nestoc文档的代码框架
 

@@ -1,6 +1,6 @@
 // TODO: add secret levels
 // TODO: API check
-#let default_template(title:"", author:"", abstract:"", body) = {
+#let default_template(title:"", author:"", abstract:[], body) = {
   // These show rules are applied to body before ilm's show rules being applied
   show: set text(font: ("Noto Serif CJK SC", "Noto Color Emoji"), lang: "zh", region: "cn")
   show raw: set text(font: ("Noto Sans Mono CJK SC"))
