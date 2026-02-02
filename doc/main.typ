@@ -3,9 +3,9 @@
 #let nestoc_fn(
   heading_offset: 0,
 ) = (
-title: "Nestoc 文档",
+title: "Nestoc 文档插件",
 author: "xieby1",
-abstract: [一个模块+嵌套的Typst文档模板。],
+abstract: [一个模块+嵌套的Typst文档插件。],
 body: [
 // TODO: add to template
 // Line numbering for Raw Text / Code: https://github.com/typst/typst/issues/344
@@ -22,7 +22,7 @@ body: [
 = Nestoc 简介
 
 🪆Nestoc📑 的名称来源于 Nest（嵌套🪆）与 Doc（文档📑）的组合，亦可理解为 Nest + ToC（Table of Contents 目录）。
-Nestoc 旨在构建一个支持文档嵌套（或称"模块化"）的 Typst 模板。
+Nestoc 旨在构建一个支持文档嵌套（或称"模块化"）的 Typst 插件。
 
 设想一个包含多个章节的大型文档项目，
 需要由多位协作者分*模块*完成各章节内容，
@@ -30,8 +30,6 @@ Nestoc 旨在构建一个支持文档嵌套（或称"模块化"）的 Typst 模�
 
 - / 模块: 每个章节均为独立、可编辑、可编译、可阅读的自包含文档。
 - / 嵌套: 所有章节组合时，标题、编号等元素将自动调整，形成协调一致的最终文档。
-
-*注*：目前 Nestoc 的外观基于 #link("https://github.com/talal/ilm")[ilm] 模板。
 
 = Nestoc 能力展示
 
@@ -61,9 +59,9 @@ parent被嵌套到了这个总文档的下面。
 
 = 原理和使用
 
-Nestoc模板的所有功能围绕着函数`nestoc(nestoc_fn, heading_offset:0) => body`函数展开
+Nestoc的所有功能围绕着函数`nestoc(nestoc_fn, heading_offset:0) => body`函数展开
 
-== `nestoc(nestoc_fn, heading_offset:0) => body`
+== `nestoc(nestoc_fn, heading_offset:0, style_template: default_style_template) => body`
 
 - / 参数`nestoc_fn`: 为函数，其类型为`nestoc_fn(heading_offset:0) => nestoc_obj`：
 - / 参数`heading_offset`: 为int，表示给`nestoc_fn`的题目和标题施加`heading_offset`的偏移。
@@ -71,6 +69,7 @@ Nestoc模板的所有功能围绕着函数`nestoc(nestoc_fn, heading_offset:0) =
   - / `heading_offset:0`: 表示不偏移
   - / `heading_offset:1`: 表示`nestoc_fn`题目=>一级标题，`nestoc_fn`的一级标题=>二级标题，...
   - / `heading_offset:2`: 表示`nestoc_fn`题目=>二级标题，`nestoc_fn`的一级标题=>三级标题，...
+- / 参数`template:default_template`: 模板，目前默认模板为修改过的#link("https://github.com/talal/ilm")[ilm] 模板。
 - / 返回值: 为文档内容
 
 == `nestoc_fn(heading_offset:0) => nestoc_obj`
@@ -80,7 +79,6 @@ Nestoc模板的所有功能围绕着函数`nestoc(nestoc_fn, heading_offset:0) =
   - / `title`: 字符串类型，文档的题目
   - / `author`: 字符串类型，作者
   - / `abstract`: 文档类型，摘要
-  - / ...: 其他ilm模板可用的参数
   - / `body`: 文档内容
 
 == Nestoc文档的代码框架
