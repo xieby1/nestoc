@@ -1,10 +1,8 @@
-let
-  sources = import ./nix/sources.nix;
-in {
-  pkgs ? import sources.nixpkgs {},
-  buildLocalTypstEnv ? pkgs.callPackage sources.local-typst-env {},
+{
+  pkgs ? import (import ./npins).nixpkgs {},
+  buildLocalTypstEnv ? pkgs.callPackage (import ./npins).local-typst-env {},
 }: let
-  noto-fonts-cjk-sc-static = pkgs.callPackage ./nix/noto-fonts-cjk-sc-static.nix {};
+  noto-fonts-cjk-sc-static = pkgs.callPackage ./noto-fonts-cjk-sc-static.nix {};
 in buildLocalTypstEnv (finalAttrs: {
   src = pkgs.lib.sourceByRegex ./. [".*\.typ$" "^typst.toml$"];
 
@@ -13,7 +11,7 @@ in buildLocalTypstEnv (finalAttrs: {
     pkgs.poppler-utils
     pkgs.python3
     # for deps management
-    pkgs.niv
+    pkgs.npins
   ];
 
   buildInputs = [

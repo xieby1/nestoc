@@ -1,0 +1,31 @@
+{
+  "pins": {
+    "local-typst-env": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "xieby1",
+        "repo": "local-typst-env"
+      },
+      "branch": "main",
+      "submodules": false,
+      "revision": "030f5dc43b868e87acef3360c9d9fe46bdb1e873",
+      "url": "https://github.com/xieby1/local-typst-env/archive/030f5dc43b868e87acef3360c9d9fe46bdb1e873.tar.gz",
+      "hash": "1xgmdpn85dxnyv6yr8ws5sqmsjz8h86zc1rhy55a411q2kly3bkf"
+    },
+    "nixpkgs": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "NixOS",
+        "repo": "nixpkgs"
+      },
+      "branch": "nixos-25.11",
+      "submodules": false,
+      "revision": "41e216c0ca66c83b12ab7a98cc326b5db01db646",
+      "url": "https://github.com/NixOS/nixpkgs/archive/41e216c0ca66c83b12ab7a98cc326b5db01db646.tar.gz",
+      "hash": "084zixgy2k5rscg3m65fmmw6k9za9g8wpbp63b0y9h787n1fdci3"
+    }
+  },
+  "version": 5
+}
