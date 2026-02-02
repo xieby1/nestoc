@@ -1,0 +1,26 @@
+{
+    "local-typst-env": {
+        "branch": "main",
+        "description": "Local Typst dependencies environment managed by nix",
+        "homepage": null,
+        "owner": "xieby1",
+        "repo": "local-typst-env",
+        "rev": "030f5dc43b868e87acef3360c9d9fe46bdb1e873",
+        "sha256": "1xgmdpn85dxnyv6yr8ws5sqmsjz8h86zc1rhy55a411q2kly3bkf",
+        "type": "tarball",
+        "url": "https://github.com/xieby1/local-typst-env/archive/030f5dc43b868e87acef3360c9d9fe46bdb1e873.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "nixpkgs": {
+        "branch": "25.11",
+        "description": "Nix Packages collection",
+        "homepage": null,
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "871b9fd269ff6246794583ce4ee1031e1da71895",
+        "sha256": "1zn1lsafn62sz6azx6j735fh4vwwghj8cc9x91g5sx2nrg23ap9k",
+        "type": "tarball",
+        "url": "https://github.com/NixOS/nixpkgs/archive/871b9fd269ff6246794583ce4ee1031e1da71895.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    }
+}

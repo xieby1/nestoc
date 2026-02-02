@@ -1,25 +1,17 @@
 let
-  # latest nixpkgs 25.11
-  pkgs = import ((import <nixpkgs> {}).fetchFromGitHub {
-    owner = "NixOS";
-    repo = "nixpkgs";
-    rev = "77ef7a29d276c6d8303aece3444d61118ef71ac2";
-    hash = "sha256-XsM7GP3jHlephymxhDE+/TKKO1Q16phz/vQiLBGhpF4=";
-  }) {};
-  buildLocalTypstEnv = pkgs.callPackage (pkgs.fetchFromGitHub {
-    owner = "xieby1";
-    repo = "local-typst-env";
-    rev = "030f5dc43b868e87acef3360c9d9fe46bdb1e873";
-    hash = "sha256-bq7h6RQ4BKJK8TAH9g2C6EtdsS6ao+zN9ra3guxt9fU=";
-  }) {};
+  sources = import ./nix/sources.nix;
+  pkgs = import sources.nixpkgs {};
+  buildLocalTypstEnv = pkgs.callPackage sources.local-typst-env {};
   noto-fonts-cjk-sc-static = pkgs.callPackage ./noto-fonts-cjk-sc-static.nix {};
 in buildLocalTypstEnv (finalAttrs: {
   src = pkgs.lib.sourceByRegex ./. [".*\.typ$" "^typst.toml$"];
 
-  # for tests
   nativeBuildInputs = [
+    # for tests
     pkgs.poppler-utils
     pkgs.python3
+    # for deps management
+    pkgs.niv
   ];
 
   buildInputs = [
