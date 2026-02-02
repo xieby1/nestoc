@@ -1,0 +1,17 @@
+name: deploy-github-pages
+on: [push, pull_request]
+jobs:
+  deploy-github-pages:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v5
+    - uses: cachix/install-nix-action@v31
+      with:
+        nix_path: nixpkgs=channel:nixos-unstable
+    - run: nix-shell --run "make -j"
+    - uses: peaceiris/actions-gh-pages@v4
+      if: ${{ github.ref == 'refs/heads/main' }}
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./doc
+        force_orphan: true
