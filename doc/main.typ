@@ -102,15 +102,17 @@ Nestoc的所有功能围绕着函数`nestoc(nestoc_fn, heading_offset:0) => body
 
 #figure(caption: "Nestoc文档的代码框架")[
 ```typst
+// 导入nestoc
+#import "@local/nestoc:0.1.0"
 // 定义nestoc_fn函数
-#let nestoc_fn(heading_offset: 0 ) = (
+#let nestoc_fn(heading_offset: 0) = (
 title: "题目", author: "作者", abstract: [摘要], body: [
 = 一级标题
 
 正文...
 ])
 // 调用nestoc函数，将nestoc_fn的文档内容插入于此。
-#nestoc(nestoc_fn)
+#nestoc.nestoc(nestoc_fn)
 ```
 ]
 
