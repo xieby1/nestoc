@@ -1,5 +1,18 @@
 {
   "pins": {
+    "gitignore-nix": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "hercules-ci",
+        "repo": "gitignore.nix"
+      },
+      "branch": "master",
+      "submodules": false,
+      "revision": "cb5e3fdca1de58ccbc3ef53de65bd372b48f567c",
+      "url": "https://github.com/hercules-ci/gitignore.nix/archive/cb5e3fdca1de58ccbc3ef53de65bd372b48f567c.tar.gz",
+      "hash": "1vjjcjx5z0lci8psn3xkcb5rqrpxknkw6w0q38bk8cadwr6whs2y"
+    },
     "local-typst-env": {
       "type": "Git",
       "repository": {
@@ -9,9 +22,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "030f5dc43b868e87acef3360c9d9fe46bdb1e873",
-      "url": "https://github.com/xieby1/local-typst-env/archive/030f5dc43b868e87acef3360c9d9fe46bdb1e873.tar.gz",
-      "hash": "1xgmdpn85dxnyv6yr8ws5sqmsjz8h86zc1rhy55a411q2kly3bkf"
+      "revision": "f2d1d6f9be7795bfa1e412b6e9aea2e550161612",
+      "url": "https://github.com/xieby1/local-typst-env/archive/f2d1d6f9be7795bfa1e412b6e9aea2e550161612.tar.gz",
+      "hash": "1017vlr1cd41caqs206w828xjdfw72qm8vavajzpv180hc36z1sc"
     },
     "nixpkgs": {
       "type": "Git",

@@ -117,7 +117,7 @@ title: "题目", author: "作者", abstract: [摘要], body: [
 若用图表示上面的Nestoc文档代码框架，则如下：
 
 #figure(caption: [Nestoc文档代码框架的图示], {
-  import "@preview/fletcher:0.5.7": diagram, node, edge
+  import "@preview/fletcher:0.5.8": diagram, node, edge
   diagram(
     node((0,0), [`nestoc_fn`]),
       edge("-|>", label: [`nestoc(..)+编译`], label-side: center),
@@ -147,7 +147,7 @@ title: "题目", author: "作者", abstract: [摘要], body: [
 所有`nestoc`和`nestoc_fn`的关系如下图所示：
 
 #figure(caption: "测试一下图", {
-  import "@preview/fletcher:0.5.7": diagram, node, edge
+  import "@preview/fletcher:0.5.8": diagram, node, edge
   diagram(
     node((0,0), [`总文档nestoc_fn`], name: <top>),
       edge("-|>", label: [`nestoc(..)+编译`], label-side: center),

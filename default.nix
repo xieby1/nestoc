@@ -1,10 +1,13 @@
-{
-  pkgs ? import (import ./npins).nixpkgs {},
-  buildLocalTypstEnv ? pkgs.callPackage (import ./npins).local-typst-env {},
+let
+  npins = import ./npins;
+in {
+  pkgs ? import npins.nixpkgs {},
+  buildLocalTypstEnv ? pkgs.callPackage npins.local-typst-env {},
 }: let
   noto-fonts-cjk-sc-static = pkgs.callPackage ./noto-fonts-cjk-sc-static.nix {};
+  inherit (import npins.gitignore-nix { inherit (pkgs) lib; }) gitignoreSource;
 in buildLocalTypstEnv (finalAttrs: {
-  src = pkgs.lib.sourceByRegex ./. [".*\.typ$" "^typst.toml$"];
+  src = gitignoreSource ./.;
 
   nativeBuildInputs = [
     # for tests
