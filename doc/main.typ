@@ -176,6 +176,8 @@ title: "题目", author: "作者", abstract: [摘要], body: [
 出现
 空格
 
+中间 也不要有 空格
+
 ])
 
 #nestoc(nestoc_fn)

@@ -4,8 +4,14 @@
   // These show rules are applied to body before ilm's show rules being applied
   show: set text(font: ("Noto Serif CJK SC", "Noto Color Emoji"), lang: "zh", region: "cn")
   show raw: set text(font: ("Noto Sans Mono CJK SC"))
-  import "@preview/cjk-unbreak:0.2.0"
-  show: cjk-unbreak.remove-cjk-break-space
+
+  // https://guide.typst.dev/FAQ/chinese-remove-space
+  let han-or-punct = "[-\p{sc=Hani}。．，、：；！‼？⁇⸺——……⋯⋯～–—·・‧/／「」『』“”‘’（）《》〈〉【】〖〗〔〕［］｛｝＿﹏●•]"
+  show regex(han-or-punct + " " + han-or-punct): it => {
+    let (a, _, b) = it.text.clusters()
+    a + b
+  }
+
   import "@preview/ilm:1.4.2"
   ilm.ilm(
     title: title,
