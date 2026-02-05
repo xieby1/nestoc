@@ -22,9 +22,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "f2d1d6f9be7795bfa1e412b6e9aea2e550161612",
-      "url": "https://github.com/xieby1/local-typst-env/archive/f2d1d6f9be7795bfa1e412b6e9aea2e550161612.tar.gz",
-      "hash": "1017vlr1cd41caqs206w828xjdfw72qm8vavajzpv180hc36z1sc"
+      "revision": "5bcd9d356f6bb7c1f8931023671c2522c1843f55",
+      "url": "https://github.com/xieby1/local-typst-env/archive/5bcd9d356f6bb7c1f8931023671c2522c1843f55.tar.gz",
+      "hash": "0xr9wrxrj9f34r7hnjl3xh7sb9cj5xjg0ggkj4dvjr00qdshjp8x"
     },
     "nixpkgs": {
       "type": "Git",
