@@ -7,10 +7,8 @@
 
   // https://guide.typst.dev/FAQ/chinese-remove-space
   let han-or-punct = "[-\p{sc=Hani}。．，、：；！‼？⁇⸺——……⋯⋯～–—·・‧/／「」『』“”‘’（）《》〈〉【】〖〗〔〕［］｛｝＿﹏●•]"
-  show regex(han-or-punct + " " + han-or-punct): it => {
-    let (a, _, b) = it.text.clusters()
-    a + b
-  }
+  show regex(han-or-punct + " "): it => it.text.clusters().first()
+  show regex(" " + han-or-punct): it => it.text.clusters().last()
 
   import "@preview/ilm:1.4.2"
   ilm.ilm(
