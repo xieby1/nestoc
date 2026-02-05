@@ -33,6 +33,7 @@ in buildLocalTypstEnv (finalAttrs: {
         sed -i '/compiler/d' typst.toml
       '';
     }))
+    pkgs.typstPackages.cjk-unbreak
     noto-fonts-cjk-sc-static
     pkgs.noto-fonts-color-emoji
   ];

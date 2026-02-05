@@ -4,6 +4,8 @@
   // These show rules are applied to body before ilm's show rules being applied
   show: set text(font: ("Noto Serif CJK SC", "Noto Color Emoji"), lang: "zh", region: "cn")
   show raw: set text(font: ("Noto Sans Mono CJK SC"))
+  import "@preview/cjk-unbreak:0.2.0"
+  show: cjk-unbreak.remove-cjk-break-space
   import "@preview/ilm:1.4.2"
   ilm.ilm(
     title: title,
