@@ -9,6 +9,7 @@
   let han-or-punct = "[-\p{sc=Hani}。．，、：；！‼？⁇⸺——……⋯⋯～–—·・‧/／「」『』“”‘’（）《》〈〉【】〖〗〔〕［］｛｝＿﹏●•]"
   show regex(han-or-punct + " "): it => it.text.clusters().first()
   show regex(" " + han-or-punct): it => it.text.clusters().last()
+  set smartquote(enabled: false)
 
   import "@preview/ilm:1.4.2"
   ilm.ilm(

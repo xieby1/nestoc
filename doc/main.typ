@@ -184,6 +184,16 @@ title: "题目", author: "作者", abstract: [摘要], body: [
 
  强制~~空~格~可以使用\~
 
+== 智能引用
+
+"不要搞智能引用"
+
+“我自己知道切换中文引号”
+
+“I know what I am doing”
+
+"So don't be over smart"
+
 ])
 
 #nestoc(nestoc_fn)

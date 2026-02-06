@@ -15,3 +15,8 @@ Typst 文档插件
 多行不会出现空格
 交替空格也不要有
 强制 空 格 可以使用~
+智能引用
+"不要搞智能引用"
+“我自己知道切换中文引号”
+“I know what I am doing”
+"So don't be over smart"
