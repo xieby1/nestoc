@@ -20,7 +20,10 @@
     figure-index: (enabled: true, title: "图索引"),
     table-index: (enabled: true, title: "表格索引"),
     listing-index: (enabled: true, title: "代码块索引"),
-    body
+    {
+      set par(justify: false)
+      body
+    }
   )
 }
 #let nestoc(nestoc_fn, heading_offset: 0, template: default_template) = {
