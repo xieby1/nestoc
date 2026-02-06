@@ -10,6 +10,7 @@
   show regex(han-or-punct + " "): it => it.text.clusters().first()
   show regex(" " + han-or-punct): it => it.text.clusters().last()
   set smartquote(enabled: false)
+  show link: it => underline(text(fill: blue, it))
 
   import "@preview/ilm:1.4.2"
   ilm.ilm(
@@ -17,6 +18,7 @@
     author: author,
     abstract: abstract,
     chapter-pagebreak: false,
+    external-link-circle: false,
     raw-text: (use-typst-defaults: true),
     figure-index: (enabled: true, title: "图索引"),
     table-index: (enabled: true, title: "表格索引"),
