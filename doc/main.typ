@@ -1,4 +1,3 @@
-// TODO: 自动编号：Listing => 代码块，Table => 表格，Figure => 图
 #import "../lib.typ": nestoc
 #let nestoc_fn(
   heading_offset: 0,
@@ -133,7 +132,6 @@ title: "题目", author: "作者", abstract: [摘要], body: [
   这让该模块可以编译成独立的pdf文档。
 - 文档的嵌套通过调用`nestoc(别的模块的nestoc_fn, heading_offset: xx)`来实现。
 
-// TODO: 引用图片编号
 所有`nestoc`和`nestoc_fn`的关系如下图所示：
 
 #figure(caption: "测试一下图", {
