@@ -1,6 +1,6 @@
 // TODO: add secret levels
 // TODO: API check
-#import "@local/nestemp:0.1.0": nestemp
+#import "@local/nestemp:0.1.1": nestemp
 #let nestoc(nestoc_fn, heading_offset: 0, template: nestemp) = {
   let nestoc_obj = nestoc_fn(heading_offset: heading_offset)
   if heading_offset == 0 {
