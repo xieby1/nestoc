@@ -7,18 +7,6 @@ title: "Nestoc 文档插件",
 author: "xieby1",
 abstract: [一个模块+嵌套的Typst文档插件。],
 body: [
-// TODO: add to template
-// Line numbering for Raw Text / Code: https://github.com/typst/typst/issues/344
-// TODO: how to customize the start line number?
-// TODO: how to customize number for each line?
-#show raw.where(block: true): code => {
-  show raw.line: line => {
-    text(fill: gray)[#line.number]
-    h(1em)
-    line.body
-  }
-  code
-}
 = Nestoc 简介
 
 🪆Nestoc📑 的名称来源于 Nest（嵌套🪆）与 Doc（文档📑）的组合，亦可理解为 Nest + ToC（Table of Contents 目录）。
