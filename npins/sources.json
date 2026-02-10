@@ -35,9 +35,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "2ba32c47cf88f0187474505d7200d2528020d450",
-      "url": "https://github.com/xieby1/nestemp/archive/2ba32c47cf88f0187474505d7200d2528020d450.tar.gz",
-      "hash": "0d0ghd5zzg0ighl5c31whq7146wvp2fy37y7jb57rymg3m9pwb5i"
+      "revision": "8e4504f6781f63f990aaef488145f2fe790c1c8b",
+      "url": "https://github.com/xieby1/nestemp/archive/8e4504f6781f63f990aaef488145f2fe790c1c8b.tar.gz",
+      "hash": "152559y1xxga7n26cywl22nfm9lz8f5a22ws688dmcywbaw815m3"
     },
     "nixpkgs": {
       "type": "Git",
