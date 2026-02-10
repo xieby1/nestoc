@@ -1,3 +1,11 @@
+#let secret-level(n: 0) = {
+       if n==0 { set page(background: rect(width:100%, height:100%, stroke:1em+red)) }
+  else if n==1 { set page(background: rect(width:100%, height:100%, stroke:1em+orange)) }
+  else if n==2 { set page(background: rect(width:100%, height:100%, stroke:1em+blue)) }
+  else if n==3 { set page(background: rect(width:100%, height:100%, stroke:1em+white)) }
+  else {assert(false, message: "Unknown secret-level: " + str(n))}
+}
+
 #import "@preview/glossy:0.8.0"
 #let init-glossary = glossy.init-glossary.with(
   format-term: (mode, short-form, long-form) => {
