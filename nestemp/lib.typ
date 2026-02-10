@@ -1,11 +1,6 @@
 #let secret-level-state = state("secret-level", none)
-#let secret-level(n: 0) = {
-       if n==0 { set page(background: rect(width:100%, height:100%, stroke:1em+red)) }
-  else if n==1 { set page(background: rect(width:100%, height:100%, stroke:1em+orange)) }
-  else if n==2 { set page(background: rect(width:100%, height:100%, stroke:1em+blue)) }
-  else if n==3 { set page(background: rect(width:100%, height:100%, stroke:1em+white)) }
-  else {assert(false, message: "Unknown secret-level: " + str(n))}
-
+#let secret-level(n: 0, body) = {
+  assert(n in (0,1,2,3), message: "Unknown secret-level: " + str(n))
   context {
     if secret-level-state.get() == none { secret-level-state.update(n) }
     else { assert( n >= secret-level-state.get(),
@@ -14,6 +9,11 @@
                + ", the new secret-level " + str(n)
     )}
   }
+  set page(background: rect(width:100%, height:100%, stroke:1em+red))    if n==0
+  set page(background: rect(width:100%, height:100%, stroke:1em+orange)) if n==1
+  set page(background: rect(width:100%, height:100%, stroke:1em+blue))   if n==2
+  set page(background: rect(width:100%, height:100%, stroke:1em+white))  if n==3
+  body
 }
 
 #import "@preview/glossy:0.8.0"
