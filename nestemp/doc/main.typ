@@ -1,8 +1,8 @@
-#import "../lib.typ": nestemp, init-glossary, glossary
-#show: init-glossary.with((
+#import "../lib.typ" as nestemp
+#show: nestemp.init-glossary.with((
   UCAS: "University of Chinese Academy of Sciences"
 ))
-#show: nestemp.with(
+#show: nestemp.template0.with(
   title: "Nestemp",
   author: "xieby1",
   abstract: [The default template for Nestoc],

@@ -11,7 +11,7 @@
   theme: glossy.theme-academic + ( section: (title, body) => { body } )
 )
 
-#let nestemp(title:"", author:"", abstract:[], glossary-enable:true, body) = {
+#let template0(title:"", author:"", abstract:[], glossary-enable:true, body) = {
   // These show rules are applied to body before ilm's show rules being applied
   show: set text(font: ("Noto Serif CJK SC", "Noto Color Emoji"), lang: "zh", region: "cn")
   show raw: set text(font: ("Noto Sans Mono CJK SC"))

@@ -1,11 +1,11 @@
 // TODO: add secret levels
 // TODO: API check
 #import "./nestemp/lib.typ" as nestemp
-#let nestoc(nestoc_fn, heading_offset: 0, template: nestemp.nestemp) = {
+#let nestoc(nestoc_fn, heading_offset: 0, template0: nestemp.template0, templateX: none) = {
   let nestoc_obj = nestoc_fn(heading_offset: heading_offset)
   if heading_offset == 0 {
     let body = nestoc_obj.remove("body")
-    template(..nestoc_obj, body)
+    template0(..nestoc_obj, body)
   } else {
     grid(columns: (1fr, auto),
       // Naturally, it is better to write heading(nestoc_obj.title, depth:0)
