@@ -1,4 +1,16 @@
-// Main Template
+#import "@preview/glossy:0.8.0"
+#let init-glossary = glossy.init-glossary.with(
+  format-term: (mode, short-form, long-form) => {
+    if mode == "short" {short-form}
+    else if mode == "long" {long-form}
+    else {short-form + " （" + long-form + "）"}
+  },
+)
+#let glossary = glossy.glossary.with(
+  // override the theme
+  theme: glossy.theme-academic + ( section: (title, body) => { body } )
+)
+
 #let nestemp(title:"", author:"", abstract:[], body) = {
   // These show rules are applied to body before ilm's show rules being applied
   show: set text(font: ("Noto Serif CJK SC", "Noto Color Emoji"), lang: "zh", region: "cn")
@@ -23,6 +35,8 @@
     code
   }
 
+  show: init-glossary.with(())
+
   import "@preview/ilm:1.4.2"
   ilm.ilm(
     title: title,
@@ -34,30 +48,10 @@
     figure-index: (enabled: true, title: "图索引"),
     table-index: (enabled: true, title: "表格索引"),
     listing-index: (enabled: true, title: "代码块索引"),
+    appendix: (enabled: true, body: glossary(), title: "术语索引"),
     {
       set par(justify: false)
       body
     }
   )
 }
-
-// Optional Components
-#import "@preview/glossy:0.8.0"
-#let init-glossary = glossy.init-glossary.with(
-  format-term: (mode, short-form, long-form) => {
-    if mode == "short" {short-form}
-    else if mode == "long" {long-form}
-    else {short-form + " （" + long-form + "）"}
-  },
-)
-#let glossary = glossy.glossary.with(
-  title: "术语索引",
-  // override the theme
-  theme: glossy.theme-academic + (
-    section: (title, body) => {
-      // The original arg is `level: 1`, which prevent nestoc's heading offset mechanism.
-      heading(depth: 1, title)
-      body
-    },
-  )
-)
