@@ -1,5 +1,5 @@
 #let secret-level-state = state("secret-level", none)
-#let secret-level(n: 0, body) = {
+#let secret-level(n: 3, body) = {
   assert(n in (0,1,2,3), message: "Unknown secret-level: " + str(n))
   context {
     if secret-level-state.get() == none { secret-level-state.update(n) }
