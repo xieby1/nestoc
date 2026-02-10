@@ -9,11 +9,16 @@
                + ", the new secret-level " + str(n)
     )}
   }
-  set page(background: rect(width:100%, height:100%, stroke:1em+red))    if n==0
-  set page(background: rect(width:100%, height:100%, stroke:1em+orange)) if n==1
-  set page(background: rect(width:100%, height:100%, stroke:1em+blue))   if n==2
-  set page(background: rect(width:100%, height:100%, stroke:1em+white))  if n==3
-  body
+  block(
+    stroke: (right: 1pt+(
+           if n==0 {red}
+      else if n==1 {orange}
+      else if n==2 {blue}
+      else if n==3 {white}
+    )),
+    width: 100%,
+    body
+  )
 }
 
 #import "@preview/glossy:0.8.0"
