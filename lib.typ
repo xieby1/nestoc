@@ -1,7 +1,7 @@
 // TODO: add secret levels
 // TODO: API check
-#import "./nestemp/lib.typ": nestemp
-#let nestoc(nestoc_fn, heading_offset: 0, template: nestemp) = {
+#import "./nestemp/lib.typ" as nestemp
+#let nestoc(nestoc_fn, heading_offset: 0, template: nestemp.nestemp) = {
   let nestoc_obj = nestoc_fn(heading_offset: heading_offset)
   if heading_offset == 0 {
     let body = nestoc_obj.remove("body")
