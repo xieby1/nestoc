@@ -1,2 +1,2 @@
 #import "../../../lib.typ" as nestemp
-#nestemp.secret-level(n:4)
+#show: nestemp.set-secret-level.with(n:4)
