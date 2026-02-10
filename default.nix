@@ -21,6 +21,6 @@ in buildLocalTypstEnv (finalAttrs: {
     pkgs.typstPackages.fletcher
   ];
   propagatedBuildInputs = [
-    (import npins.nestemp { inherit pkgs buildLocalTypstEnv; })
+    (import ./nestemp { inherit pkgs buildLocalTypstEnv; })
   ];
 })

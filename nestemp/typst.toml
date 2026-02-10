@@ -1,0 +1,8 @@
+[package]
+name = "nestemp"
+version = "0.1.3"
+entrypoint = "lib.typ"
+
+[template]
+path = "./doc"
+entrypoint = "main.typ"

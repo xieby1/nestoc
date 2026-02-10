@@ -26,19 +26,6 @@
       "url": "https://github.com/xieby1/local-typst-env/archive/5bcd9d356f6bb7c1f8931023671c2522c1843f55.tar.gz",
       "hash": "0xr9wrxrj9f34r7hnjl3xh7sb9cj5xjg0ggkj4dvjr00qdshjp8x"
     },
-    "nestemp": {
-      "type": "Git",
-      "repository": {
-        "type": "GitHub",
-        "owner": "xieby1",
-        "repo": "nestemp"
-      },
-      "branch": "main",
-      "submodules": false,
-      "revision": "8e4504f6781f63f990aaef488145f2fe790c1c8b",
-      "url": "https://github.com/xieby1/nestemp/archive/8e4504f6781f63f990aaef488145f2fe790c1c8b.tar.gz",
-      "hash": "152559y1xxga7n26cywl22nfm9lz8f5a22ws688dmcywbaw815m3"
-    },
     "nixpkgs": {
       "type": "Git",
       "repository": {
