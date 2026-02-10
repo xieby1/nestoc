@@ -1,9 +1,19 @@
+#let secret-level-state = state("secret-level", none)
 #let secret-level(n: 0) = {
        if n==0 { set page(background: rect(width:100%, height:100%, stroke:1em+red)) }
   else if n==1 { set page(background: rect(width:100%, height:100%, stroke:1em+orange)) }
   else if n==2 { set page(background: rect(width:100%, height:100%, stroke:1em+blue)) }
   else if n==3 { set page(background: rect(width:100%, height:100%, stroke:1em+white)) }
   else {assert(false, message: "Unknown secret-level: " + str(n))}
+
+  context {
+    if secret-level-state.get() == none { secret-level-state.update(n) }
+    else { assert( n >= secret-level-state.get(),
+      message: "secret-level violated: the doc's secret-level is "
+               + str(secret-level-state.get())
+               + ", the new secret-level " + str(n)
+    )}
+  }
 }
 
 #import "@preview/glossy:0.8.0"
