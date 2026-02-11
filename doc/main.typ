@@ -155,6 +155,11 @@ title: "题目", author: "作者", abstract: [摘要], body: [
   )
 })
 
+#{
+  import "../nestemp/doc/main.typ": nestoc_fn
+  nestoc(nestoc_fn, heading_offset: heading_offset+1)
+}
+
 ])
 
 #nestoc(nestoc_fn)
