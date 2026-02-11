@@ -44,7 +44,11 @@ parent被嵌套到了这个总文档的下面。
   nestoc(nestoc_fn, heading_offset: heading_offset+2)
 }
 
-= 原理和使用
+= 使用
+
+TODO: 说明nix
+
+= 原理和API
 
 Nestoc的所有功能围绕着函数`nestoc(nestoc_fn, heading_offset:0) => body`函数展开
 
