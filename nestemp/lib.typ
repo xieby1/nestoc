@@ -16,6 +16,8 @@
       else if n==2 {blue}
       else if n==3 {white}
     )),
+    radius: 1em,
+    outset: (right: 1em),
     width: 100%,
     body
   )
