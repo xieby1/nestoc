@@ -22,5 +22,11 @@ test: $(addsuffix .test,${MAIN_PDFs}) ${COMPILE_PDFs} \
 %test.sh.run: %test.sh
 	bash $<
 
+publish: $(addprefix public/,${MAIN_PDFs})
+public/%: %
+	mkdir -p $(@D)
+	cp $< $@
+
 clean:
 	rm -f ${MAIN_PDFs} ${COMPILE_PDFs}
+	rm -rf public/
