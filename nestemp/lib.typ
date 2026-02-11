@@ -12,8 +12,8 @@
   block(
     stroke: (right: 1pt+(
            if n==0 {red}
-      else if n==1 {orange}
-      else if n==2 {blue}
+      else if n==1 {yellow}
+      else if n==2 {green}
       else if n==3 {white}
     )),
     radius: 1em,
