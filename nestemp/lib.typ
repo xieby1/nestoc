@@ -1,3 +1,9 @@
+#import "@local/alexandria:0.2.2": add-bib
+#let init-bib(read: auto) = {
+  import "@local/alexandria:0.2.2"
+  show: alexandria.alexandria(prefix: "bib:", read: read)
+}
+
 #let secret-level-state = state("secret-level", none)
 #let set-secret-level(n: 3, body) = {
   assert(n in (0,1,2,3), message: "Unknown secret-level: " + str(n))
@@ -62,6 +68,9 @@
 
   show: init-glossary.with(())
 
+  import "@local/alexandria:0.2.2"
+  show: alexandria.alexandria(prefix: "bib:", read: path=>read(path))
+
   import "@preview/ilm:1.4.2"
   ilm.ilm(
     title: title,
@@ -74,7 +83,21 @@
     table-index: (enabled: true, title: "表格索引"),
     listing-index: (enabled: true, title: "代码块索引"),
     // TODO: make glossary-enable auto?
-    appendix: (enabled: glossary-enable, body: glossary(), title: "术语索引"),
+    // TODO: remove appendix, place these content under top document,
+    //       this may need to rewrite ilm template
+    appendix: (enabled: glossary-enable, title: "附录",
+      body: [
+        #alexandria.load-bibliography(prefix: "bib:")
+        #context {
+          let bib = alexandria.get-bibliography("bib:")
+          alexandria.render-bibliography(bib, title: "参考文献索引")
+        }
+
+        = 术语索引
+
+        #glossary()
+      ],
+    ),
     {
       set par(justify: false)
       body
