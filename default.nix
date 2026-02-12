@@ -38,6 +38,7 @@ in buildLocalTypstEnv (finalAttrs: {
       '';
     }))
     pkgs.typstPackages.glossy
+    (import ./nestemp/alexandria {inherit npins pkgs buildLocalTypstEnv;})
 
     # Fonts
     (pkgs.callPackage ./nestemp/noto-fonts-cjk-sc-static.nix {})
