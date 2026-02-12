@@ -85,11 +85,9 @@
     //       this may need to rewrite ilm template
     appendix: (enabled: glossary-enable, title: "附录",
       body: [
-        = 参考文献索引
-
         #context bibliography(bibs.final())
 
-        = 术语索引
+        #heading(numbering:none, "术语索引")
 
         #glossary()
       ],
