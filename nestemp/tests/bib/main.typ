@@ -3,10 +3,12 @@
   title: "Test Bibliography",
   author: "xieby1",
 )
-#nestemp.init-bib(read: path=>read(path))
-#nestemp.add-bib("./main1.bib")
-#nestemp.add-bib("./main2.bib")
+// TODO: Can we use relpath here?
+// NOTE: The abspath in typst is the root path of this package
+#nestemp.add-bib("/nestemp/tests/bib/main1.bib")
+#nestemp.add-bib("/nestemp/tests/bib/main2.bib")
 
-Miao: @bib:ref1,
-@bib:ref2
+
+Miao: @ref1,
+@ref2
 wang!

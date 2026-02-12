@@ -1,8 +1,9 @@
-#import "@local/alexandria:0.2.2": add-bib
-#let init-bib(read: auto) = {
-  import "@local/alexandria:0.2.2"
-  show: alexandria.alexandria(prefix: "bib:", read: read)
-}
+#let bibs = state("__bibs", ())
+#let add-bib(path) = bibs.update(old => {
+  if old == none { old =   (path,) }
+  else           { old.push(path)  }
+  old
+})
 
 #let secret-level-state = state("secret-level", none)
 #let set-secret-level(n: 3, body) = {
@@ -68,9 +69,6 @@
 
   show: init-glossary.with(())
 
-  import "@local/alexandria:0.2.2"
-  show: alexandria.alexandria(prefix: "bib:", read: path=>read(path))
-
   import "@preview/ilm:1.4.2"
   ilm.ilm(
     title: title,
@@ -87,11 +85,9 @@
     //       this may need to rewrite ilm template
     appendix: (enabled: glossary-enable, title: "附录",
       body: [
-        #alexandria.load-bibliography(prefix: "bib:")
-        #context {
-          let bib = alexandria.get-bibliography("bib:")
-          alexandria.render-bibliography(bib, title: "参考文献索引")
-        }
+        = 参考文献索引
+
+        #context bibliography(bibs.final())
 
         = 术语索引
 
