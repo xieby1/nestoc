@@ -1,3 +1,13 @@
+#let numbering(start:1, len:1, code) = {
+  show raw.line: line => {
+    let str_num = str(line.number + start - 1)
+    // padding left
+    if str_num.len() < len { str_num = [~]*(len - str_num.len()) + str_num }
+    text(fill:gray, str_num); [~]; line.body
+  }
+  code
+}
+
 #let bibs = state("__bibs", ())
 #let add-bib(path) = bibs.update(old => {
   if old == none { old =   (path,) }
@@ -54,18 +64,6 @@
   show regex(" " + han-or-punct): it => it.text.clusters().last()
   set smartquote(enabled: false)
   show link: it => underline(text(fill: blue, it))
-
-  // Line numbering for Raw Text / Code: https://github.com/typst/typst/issues/344
-  // TODO: how to customize the start line number?
-  // TODO: how to customize number for each line?
-  show raw.where(block: true): code => {
-    show raw.line: line => {
-      text(fill: gray)[#line.number]
-      h(1em)
-      line.body
-    }
-    code
-  }
 
   show: init-glossary.with(())
 

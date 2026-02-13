@@ -33,17 +33,6 @@
 
 "So don't be over smart"
 
-== 代码块
-
-=== 自动编号
-
-```c
-// 🐱
-int main(void) {
-  return 0;
-}
-```
-
 == Glossary @UCAS:short
 
 @UCAS
