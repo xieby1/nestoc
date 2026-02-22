@@ -1,4 +1,4 @@
-#import "../lib.typ": nestoc
+#import "../lib.typ": nestoc, nestemp
 #let nestoc_fn(
   heading_offset: 0,
 ) = (
@@ -62,7 +62,6 @@ Nestoc的所有功能围绕着函数`nestoc(nestoc_fn, heading_offset:0) => body
   - / `heading_offset:2`: 表示`nestoc_fn`题目=>二级标题，`nestoc_fn`的一级标题=>三级标题，...
 - / 参数`template:default_template`: 模板，其类型为：\
     `template(title:"", author:"", abstract:[], body) => _body`。
-    目前默认模板为修改过的#link("https://github.com/talal/ilm")[ilm] 模板。
 - / 返回值: 为文档内容
 
 == `nestoc_fn(heading_offset:0) => nestoc_obj`
@@ -92,7 +91,7 @@ Nestoc的所有功能围绕着函数`nestoc(nestoc_fn, heading_offset:0) => body
 因此一个Nestoc文档的代码框架如下：
 
 #figure(caption: "Nestoc文档的代码框架")[
-```typst
+#nestemp.numbering(len:2, ```typst
 // 导入nestoc
 #import "@local/nestoc:0.1.0"
 // 定义nestoc_fn函数
@@ -104,8 +103,7 @@ title: "题目", author: "作者", abstract: [摘要], body: [
 ])
 // 调用nestoc函数，将nestoc_fn的文档内容插入于此。
 #nestoc.nestoc(nestoc_fn)
-```
-]
+```)]
 
 若用图表示上面的Nestoc文档代码框架，则如下：
 

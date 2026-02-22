@@ -54,10 +54,6 @@
 )
 
 #let template0(title:"", author:"", abstract:[], glossary-enable:true, body) = {
-  // These show rules are applied to body before ilm's show rules being applied
-  show: set text(font: ("Noto Serif CJK SC", "Noto Color Emoji"), lang: "zh", region: "cn")
-  show raw: set text(font: ("Noto Sans Mono CJK SC"))
-
   // https://guide.typst.dev/FAQ/chinese-remove-space
   let han-or-punct = "[-\p{sc=Hani}。．，、：；！‼？⁇⸺——……⋯⋯～–—·・‧/／「」『』“”‘’（）《》〈〉【】〖〗〔〕［］｛｝＿﹏●•]"
   show regex(han-or-punct + " "): it => it.text.clusters().first()
@@ -67,32 +63,56 @@
 
   show: init-glossary.with(())
 
-  import "@preview/ilm:1.4.2"
-  ilm.ilm(
-    title: title,
-    author: author,
-    abstract: abstract,
-    chapter-pagebreak: false,
-    external-link-circle: false,
-    raw-text: (use-typst-defaults: true),
-    figure-index: (enabled: true, title: "图索引"),
-    table-index: (enabled: true, title: "表格索引"),
-    listing-index: (enabled: true, title: "代码块索引"),
-    // TODO: make glossary-enable auto?
-    // TODO: remove appendix, place these content under top document,
-    //       this may need to rewrite ilm template
-    appendix: (enabled: glossary-enable, title: "附录",
-      body: [
-        #context bibliography(bibs.final())
+  set document(title: title, author: author)
+  show: set text(font: ("Noto Serif CJK SC", "Noto Color Emoji"), lang: "zh", region: "cn")
+  show raw: set text(font: ("Noto Sans Mono CJK SC"))
 
-        #heading(numbering:none, "术语索引")
+  // This template is based on ilm
+  // Cover page.
+  page(align(left + horizon, block(width: 90%)[
+    #let v-space = v(2em, weak: true)
+    #text(3em)[*#title*]
 
-        #glossary()
-      ],
-    ),
-    {
-      set par(justify: false)
-      body
-    }
-  )
+    #v-space
+    #text(1.6em, author)
+
+    #v-space
+    #block(width: 80%, abstract)
+  ]))
+
+  outline()
+
+  pagebreak()
+
+  set math.equation(numbering: "(1)")
+
+  // Wrap `body` in curly braces so that it has its own context. This way show/set rules
+  // will only apply to body.
+  {
+    set heading(numbering: "1.")
+    body
+  }
+
+  pagebreak()
+
+  // TODO: make glossary-enable auto?
+  if glossary-enable {
+    heading(numbering:none, "术语索引")
+    glossary()
+  }
+
+  // Display indices of figures, tables, and listings.
+  let fig-t(kind) = figure.where(kind: kind)
+  let has-fig(kind) = counter(fig-t(kind)).get().at(0) > 0
+  context {
+    show outline: set heading(outlined: true)
+    let imgs = has-fig(image)
+    let tbls = has-fig(table)
+    let lsts = has-fig(raw)
+    if imgs { outline(title: "图索引", target: fig-t(image)) }
+    if tbls { outline(title: "表格索引", target: fig-t(table)) }
+    if lsts { outline(title: "代码块索引", target: fig-t(raw)) }
+  }
+
+  context bibliography(bibs.final())
 }
