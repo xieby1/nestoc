@@ -1,4 +1,3 @@
-// TODO: add secret levels
 // TODO: API check
 #import "./nestemp/lib.typ" as nestemp
 #let nestoc(nestoc_fn, heading_offset: 0, template0: nestemp.template0, templateX: none) = {
