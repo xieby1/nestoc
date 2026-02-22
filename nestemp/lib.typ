@@ -53,7 +53,7 @@
   theme: glossy.theme-academic + ( section: (title, body) => { body } )
 )
 
-#let template0(title:"", author:"", abstract:[], glossary-enable:true, body) = {
+#let template0(title:"", author:"", abstract:[], body) = {
   // https://guide.typst.dev/FAQ/chinese-remove-space
   let han-or-punct = "[-\p{sc=Hani}。．，、：；！‼？⁇⸺——……⋯⋯～–—·・‧/／「」『』“”‘’（）《》〈〉【】〖〗〔〕［］｛｝＿﹏●•]"
   show regex(han-or-punct + " "): it => it.text.clusters().first()
@@ -95,10 +95,12 @@
 
   pagebreak()
 
-  // TODO: make glossary-enable auto?
-  if glossary-enable {
-    heading(numbering:none, "术语索引")
-    glossary()
+  context {
+    let __gloss_entries = state("__gloss_entries", (:))
+    if __gloss_entries.final().len() > 0 {
+      heading(numbering:none, "术语索引")
+      glossary()
+    }
   }
 
   // Display indices of figures, tables, and listings.
@@ -114,5 +116,7 @@
     if lsts { outline(title: "代码块索引", target: fig-t(raw)) }
   }
 
-  context bibliography(bibs.final())
+  context if bibs.final().len() > 0 {
+      bibliography(bibs.final())
+  }
 }
