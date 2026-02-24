@@ -80,13 +80,15 @@
     #block(width: 80%, abstract)
   ]))
 
-  outline()
+  // TOC
+  context if counter(heading).final().at(0) > 0 {
+    outline()
+    pagebreak()
+  }
 
-  pagebreak()
-
-  set math.equation(numbering: "(1)")
-
-  { // BODY
+  // BODY
+  {
+    set math.equation(numbering: "(1)")
     set heading(numbering: "1.")
     body
   }
