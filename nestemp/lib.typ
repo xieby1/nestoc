@@ -86,38 +86,35 @@
 
   set math.equation(numbering: "(1)")
 
-  // Wrap `body` in curly braces so that it has its own context. This way show/set rules
-  // will only apply to body.
-  {
+  { // BODY
     set heading(numbering: "1.")
     body
   }
 
-  pagebreak()
+  // APPENDIX
+  {
+    let has-glossaries() = state("__gloss_entries", (:)).final().len() > 0
+    let has-images() = counter(figure.where(kind:image)).get().at(0) > 0
+    let has-tables() = counter(figure.where(kind:table)).get().at(0) > 0
+    let has-codes() = counter(figure.where(kind:raw)).get().at(0) > 0
+    let has-bibs() = bibs.final().len() > 0
 
-  context {
-    let __gloss_entries = state("__gloss_entries", (:))
-    if __gloss_entries.final().len() > 0 {
+    context if has-glossaries() or has-images() or has-tables() or has-codes() or has-bibs() {
+      pagebreak()
+    }
+    context if has-glossaries() {
       heading(numbering:none, "术语索引")
       glossary()
     }
-  }
-
-  // Display indices of figures, tables, and listings.
-  let fig-t(kind) = figure.where(kind: kind)
-  let has-fig(kind) = counter(fig-t(kind)).get().at(0) > 0
-  context {
-    show outline: set heading(outlined: true)
-    let imgs = has-fig(image)
-    let tbls = has-fig(table)
-    let lsts = has-fig(raw)
-    if imgs { outline(title: "图索引", target: fig-t(image)) }
-    if tbls { outline(title: "表格索引", target: fig-t(table)) }
-    if lsts { outline(title: "代码块索引", target: fig-t(raw)) }
-  }
-
-  context if bibs.final().len() > 0 {
+    context {
+      show outline: set heading(outlined: true)
+      if has-images() { outline(title: "图索引", target: figure.where(kind:image)) }
+      if has-tables() { outline(title: "表格索引", target: figure.where(kind:table)) }
+      if has-codes()  { outline(title: "代码块索引", target: figure.where(kind:raw)) }
+    }
+    context if has-bibs() {
       bibliography(bibs.final())
+    }
   }
 }
 
