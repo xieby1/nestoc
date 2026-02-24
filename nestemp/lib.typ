@@ -68,15 +68,12 @@
   show raw: set text(font: ("Noto Sans Mono CJK SC"))
 
   // This template is based on ilm
-  // Cover page.
+  // COVER
   page(align(left + horizon, block(width: 90%)[
-    #let v-space = v(2em, weak: true)
     #text(3em)[*#title*]
-
-    #v-space
+    #v(2em, weak: true)
     #text(1.6em, author)
-
-    #v-space
+    #v(2em, weak: true)
     #block(width: 80%, abstract)
   ]))
 
