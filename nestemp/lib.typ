@@ -120,3 +120,15 @@
       bibliography(bibs.final())
   }
 }
+
+#let templateN(heading_offset, title:"", author:"", abstract:[], body) = {
+  grid(columns: (1fr, auto),
+    // Naturally, it is better to write heading(title, depth:0)
+    // But depth only supports positive integer.
+    heading(title, level: heading_offset),
+    text(fill: gray, author)
+  )
+  abstract
+  set heading(offset: heading_offset)
+  body
+}
