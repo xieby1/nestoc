@@ -50,21 +50,21 @@ TODO: 说明nix
 
 = 原理和API
 
-Nestoc的所有功能围绕着函数`nestoc(nestoc_fn, heading_offset:0) => body`函数展开
+Nestoc的所有功能围绕着函数```typc nestoc(nestoc_fn, heading_offset:0) => body```函数展开
 
-== `nestoc(nestoc_fn, heading_offset:0, template:default_template) => body`
+== ```typc nestoc(nestoc_fn, heading_offset:0, template:default_template) => body```
 
-- / 参数`nestoc_fn`: 为函数，其类型为`nestoc_fn(heading_offset:0) => nestoc_obj`：
+- / 参数`nestoc_fn`: 为函数，其类型为```typc nestoc_fn(heading_offset:0) => nestoc_obj```：
 - / 参数`heading_offset`: 为int，表示给`nestoc_fn`的题目和标题施加`heading_offset`的偏移。
   例如：
-  - / `heading_offset:0`: 表示不偏移
-  - / `heading_offset:1`: 表示`nestoc_fn`题目=>一级标题，`nestoc_fn`的一级标题=>二级标题，...
-  - / `heading_offset:2`: 表示`nestoc_fn`题目=>二级标题，`nestoc_fn`的一级标题=>三级标题，...
-- / 参数`template:default_template`: 模板，其类型为：\
-    `template(title:"", author:"", abstract:[], body) => _body`。
+  - / ```typc heading_offset:0```: 表示不偏移
+  - / ```typc heading_offset:1```: 表示`nestoc_fn`题目=>一级标题，`nestoc_fn`的一级标题=>二级标题，...
+  - / ```typc heading_offset:2```: 表示`nestoc_fn`题目=>二级标题，`nestoc_fn`的一级标题=>三级标题，...
+- / 参数```typc template:default_template```: 模板，其类型为：
+    ```typc template(title:"", author:"", abstract:[], body) => _body```。
 - / 返回值: 为文档内容
 
-== `nestoc_fn(heading_offset:0) => nestoc_obj`
+== ```typc nestoc_fn(heading_offset:0) => nestoc_obj```
 
 - / 参数`heading_offset`: 同`nestoc`的`heading_offset`
 - / 返回值`nestoc_obj`: 为字典类型，有如下成员变量：
@@ -73,7 +73,7 @@ Nestoc的所有功能围绕着函数`nestoc(nestoc_fn, heading_offset:0) => body
   - / `abstract`: 文档类型，摘要
   - / `body`: 文档内容
 
-== `template(title:"", author:"", abstract:[], body) => _body`
+== ```typc template(title:"", author:"", abstract:[], body) => _body```
 
 - / 参数`title`: 标题字符串
 - / 参数`author`: 作者字符串
@@ -85,8 +85,8 @@ Nestoc的所有功能围绕着函数`nestoc(nestoc_fn, heading_offset:0) => body
 
 每个Nestoc文档：
 
-- 必须提供函数nestoc_fn供其他Nestoc文档调用
-- 可选调用nestoc(nestoc_fn)来渲染当前文档
+- 必须提供函数```typc nestoc_fn```供其他Nestoc文档调用
+- 可选调用```typc nestoc(nestoc_fn)```来渲染当前文档
 
 因此一个Nestoc文档的代码框架如下：
 
@@ -116,12 +116,12 @@ title: "题目", author: "作者", abstract: [摘要], body: [
   )
 })
 
-- 第1-7行定义函数`nestoc_fn(heading_offset: 0) => nestoc_obj`。
+- 第1-9行定义函数```typc nestoc_fn(heading_offset: 0) => nestoc_obj```。
   返回的`nestoc_obj`的字典包含了`title`, `author`, `abstract`以及文档主体`body`。
-- 第8-9行将上面定义的`nestoc_fn`传给`nestoc`函数。
+- 第10-11行将上面定义的`nestoc_fn`传给`nestoc`函数。
   `nestoc`内部会进行标题级别的协调，然后调用`nestoc_fn`函数，最后返回处理好的文档主体。
 
-你可能会好奇若不调用`nestoc(..)`函数会怎样？
+你可能会好奇若不调用```typc nestoc(..)```函数会怎样？
 则该typst文件仅是一个无法编译出pdf的模块。
 这个模块仅能用于嵌入其他模块。
 
@@ -130,9 +130,9 @@ title: "题目", author: "作者", abstract: [摘要], body: [
 本文档提供了一个具体的Nestoc例子。
 本文档一共包含了4个模块。
 - 每个模块均定义了自己的`nestoc_fn`函数。
-- 每个模块均调用了`nestoc(自己的nestoc_fn)`。
+- 每个模块均调用了```typc nestoc(自己的nestoc_fn)```。
   这让该模块可以编译成独立的pdf文档。
-- 文档的嵌套通过调用`nestoc(别的模块的nestoc_fn, heading_offset: xx)`来实现。
+- 文档的嵌套通过调用```typc nestoc(别的模块的nestoc_fn, heading_offset: xx)```来实现。
 
 所有`nestoc`和`nestoc_fn`的关系如下图所示：
 
