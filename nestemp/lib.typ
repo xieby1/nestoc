@@ -56,8 +56,19 @@
 #let template0(title:"", author:"", abstract:[], body) = {
   // https://guide.typst.dev/FAQ/chinese-remove-space
   let han-or-punct = "[-\p{sc=Hani}。．，、：；！‼？⁇⸺——……⋯⋯～–—·・‧/／「」『』“”‘’（）《》〈〉【】〖〗〔〕［］｛｝＿﹏●•]"
-  show regex(han-or-punct + " "): it => it.text.clusters().first()
-  show regex(" " + han-or-punct): it => it.text.clusters().last()
+  show regex(han-or-punct + " "): it => {
+    // https://forum.typst.app/t/how-to-define-a-regex-show-rule-that-doesnt-apply-in-raw-blocks/4241/4
+    // Noted: the text.font use small case
+    if text.font == "jetbrains maple mono" { it }
+    else { it.text.clusters().first() }
+  }
+  show regex(" " + han-or-punct): it => {
+    // https://forum.typst.app/t/how-to-define-a-regex-show-rule-that-doesnt-apply-in-raw-blocks/4241/4
+    // Noted: the text.font use small case
+    if text.font == "jetbrains maple mono" { it }
+    else { it.text.clusters().last() }
+  }
+
   set smartquote(enabled: false)
   show link: it => underline(text(fill: blue, it))
 
@@ -65,7 +76,7 @@
 
   set document(title: title, author: author)
   show: set text(font: ("Noto Serif CJK SC", "Noto Color Emoji"), lang: "zh", region: "cn")
-  // show raw: set text(font: ("JetBrains Maple Mono"))
+  show raw: set text(font: ("JetBrains Maple Mono"))
 
   // This template is based on ilm
   // COVER
