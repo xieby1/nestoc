@@ -65,7 +65,7 @@
 
   set document(title: title, author: author)
   show: set text(font: ("Noto Serif CJK SC", "Noto Color Emoji"), lang: "zh", region: "cn")
-  show raw: set text(font: ("Noto Sans Mono CJK SC"))
+  // show raw: set text(font: ("JetBrains Maple Mono"))
 
   // This template is based on ilm
   // COVER
