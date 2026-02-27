@@ -1,19 +1,19 @@
-# Nestoc文档插件
+# Nestoc文档插件[\[PDF\]](https://xieby1.github.io/nestoc/doc/main.pdf)
 
-<embed src="https://xieby1.github.io/nestoc/doc/main.pdf" style="width:100vw; height:80vh; max-width:100%;" type="application/pdf">
+<img src="https://xieby1.github.io/nestoc/doc/main.svg">
 
-## \> 父模块pdf
+## 嵌套的例子
 
-\> <embed src="https://xieby1.github.io/nestoc/doc/parent/main.pdf" style="width:30vw; height:40vh; max-width:100%;" type="application/pdf">
+<div style="display:flex; justify-content:space-around;">
 
-### \>\> 子模块pdf
+**父模块**[\[PDF\]](https://xieby1.github.io/nestoc/doc/main.pdf)
 
-\>\> <embed src="https://xieby1.github.io/nestoc/doc/parent/child/main.pdf" style="width:30vw; height:40vh; max-width:100%;" type="application/pdf">
+**子模块**[\[PDF\]](https://xieby1.github.io/nestoc/doc/main.pdf)
 
-#### \>\>\> 孙模块pdf
-
-\>\>\> <embed src="https://xieby1.github.io/nestoc/doc/parent/child/grandchild/main.pdf" style="width:30vw; height:40vh; max-width:100%;" type="application/pdf">
-
-## Nestemp模板pdf
-
-<embed src="https://xieby1.github.io/nestoc/nestemp/doc/main.pdf" style="width:80vw; height:80vh; max-width:100%;" type="application/pdf">
+**孙模块**[\[PDF\]](https://xieby1.github.io/nestoc/doc/main.pdf)
+</div>
+<div style="display:flex;">
+<img src="https://xieby1.github.io/nestoc/doc/parent/main.svg" style="width:30%; flex:auto; border-left:1pt solid white;">
+<img src="https://xieby1.github.io/nestoc/doc/parent/child/main.svg" style="width:30%; flex:auto; border-left:1pt solid;">
+<img src="https://xieby1.github.io/nestoc/doc/parent/child/grandchild/main.svg" style="width:30%; flex:auto; border-left:1pt solid;">
+</div>
