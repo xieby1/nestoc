@@ -75,6 +75,7 @@
   show: init-glossary.with(())
 
   set document(title: title, author: author)
+  set page(numbering: "1")
   show: set text(font: ("Noto Serif CJK SC", "Noto Color Emoji"), lang: "zh", region: "cn")
   show raw: set text(font: ("JetBrains Maple Mono"))
 
