@@ -7,6 +7,7 @@ author: "xieby3",
 body: [
 #nestemp.add-bib(read(encoding:none, "./ref.bib"))
 #show: nestemp.set-secret-level.with(n:2)
+#show: nestemp.init-glossary.with((grandchild_term0: (short:"孙模块术语〇", long:"Grandchild Term 0")))
 
 孙模块 @grandchild0 被嵌套到子模块中，当然间接地随着子模块被嵌套到了父模块和总文档中。
 其各级标题的映射关系如下：
@@ -21,7 +22,9 @@ body: [
 
 = 孙模块的一级标题
 
-孙模块的一级标题下方的内容
+孙模块的一级标题下方的内容：@grandchild_term0。
+
+第二次使用 @grandchild_term0。
 
 ])
 #nestoc(nestoc_fn)

@@ -7,6 +7,7 @@ author: "xieby1",
 body: [
 #nestemp.add-bib(read(encoding:none, "./ref.bib"))
 #show: nestemp.set-secret-level.with(n:1)
+#show: nestemp.init-glossary.with((child_term0: (short:"子模块术语〇", long:"Child Term 0")))
 
 子模块 @child0 被嵌入到父模块的题目之下。
 因此相对父模块，子模块的标题等级都会+1，
@@ -25,7 +26,9 @@ body: [
 
 = 子模块的一级标题
 
-子模块的一级标题下方的内容
+子模块的一级标题下方的内容：@child_term0
+
+第二次使用 @child_term0 。
 
 #{
   import "./grandchild/main.typ": nestoc_fn

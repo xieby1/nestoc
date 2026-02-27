@@ -20,7 +20,7 @@
   = 参考文献管理
 
   ```typ
-  #add-bib(read(encoding:none, "<xxx.bib>"))
+  #nestemp.add-bib(read(encoding:none, "<xxx.bib>"))
   ```
 
   TODO
@@ -36,7 +36,7 @@
   = 秘密等级管理
 
   ```typ
-  #show: set-secret-level.with(n:<secret-level>)
+  #show: nestemp.set-secret-level.with(n:<secret-level>)
   ```
 
   秘密等级分为4级，由不同颜色的页边标识：
@@ -95,6 +95,15 @@
   )
 }
 
+/*typ*//*
+  = 术语管理
+
+  ```typ
+  #show: nestemp.init-glossary.with(<terms>)
+  ```
+
+  其中terms的用法参考https://github.com/swaits-typst-packages/glossy。
+*/
 #import "@preview/glossy:0.8.0"
 #let init-glossary = glossy.init-glossary.with(
   format-term: (mode, short-form, long-form) => {
