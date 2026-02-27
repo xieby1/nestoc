@@ -124,6 +124,49 @@ parent被嵌套到了这个总文档的下面。
   nestoc(nestoc_fn, heading_offset: heading_offset+2)
 }
 
+= 其他：文档注释（Doccom）
+
+这个算是一个方法学，
+通过文档注释（Documentation + Comment => Doccom）的方式，
+将文档和代码紧密结合在一起。
+主要应用在底层文档，即需要和代码紧密结合的文档。
+
+== 要解决的问题
+
+Doccom要解决文档和代码分开而产生的问题：文档缺失、文档脱节、文档管理混乱。
+
+== 实现方法
+
+实现方案很简单：
+
+- 按照特定格式在注释里写typst/markdown文档，
+- 按格式文档抽取出来，
+- 保存为独立的typst/markdown文档即可。
+
+== 比较
+
+- Doccom：简单，支持任意编程语言，任意文档语言；
+- Doxygen：支持多种编程语言，但是极其复杂；
+- Python/Java docstring, rustdoc, typst tidy：简单，但仅支持特定语言；
+
+== 例子
+
+// TODO: use label and refernce
+// [title <..>] will cause "occurs multiple times in the document" due to heading appears both in outline and body.
+“API”和“Nestemp模板”章节均采用了Doccom模式。
+以“API”为例，其采用的Doccom格式为：
+
+```typ
+/*typ*//*
+  Here is the typst doc.
+  ...
+*/
+```
+
+只需要用正则表达式将"Here is the typst doc..."的内容抽取出来即可。
+“API”章节所涉及的`lib.typ`的源码如下：
+
+#raw(block:true, lang:"typ", read("../lib.typ"))
 
 ])
 
