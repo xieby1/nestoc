@@ -14,6 +14,8 @@ in buildLocalTypstEnv (finalAttrs: {
     pkgs.python3
     # for deps management
     pkgs.npins
+    # for svg
+    pkgs.pdf2svg
   ];
 
   buildInputs = [
