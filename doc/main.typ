@@ -20,43 +20,6 @@ Nestoc 旨在构建一个支持文档嵌套（或称"模块化"）的 Typst 插�
 
 = 使用
 
-TODO: 说明nix
-
-= 原理和API
-
-Nestoc的所有功能围绕着函数```typc nestoc(nestoc_fn, heading_offset:0) => body```函数展开
-
-== ```typc nestoc(nestoc_fn, heading_offset:0, template:default_template) => body```
-
-- / 参数`nestoc_fn`: 为函数，其类型为```typc nestoc_fn(heading_offset:0) => nestoc_obj```：
-- / 参数`heading_offset`: 为int，表示给`nestoc_fn`的题目和标题施加`heading_offset`的偏移。
-  例如：
-  - / ```typc heading_offset:0```: 表示不偏移
-  - / ```typc heading_offset:1```: 表示`nestoc_fn`题目=>一级标题，`nestoc_fn`的一级标题=>二级标题，...
-  - / ```typc heading_offset:2```: 表示`nestoc_fn`题目=>二级标题，`nestoc_fn`的一级标题=>三级标题，...
-- / 参数```typc template:default_template```: 模板，其类型为：
-    ```typc template(title:"", author:"", abstract:[], body) => _body```。
-- / 返回值: 为文档内容
-
-== ```typc nestoc_fn(heading_offset:0) => nestoc_obj```
-
-- / 参数`heading_offset`: 同`nestoc`的`heading_offset`
-- / 返回值`nestoc_obj`: 为字典类型，有如下成员变量：
-  - / `title`: 字符串类型，文档的题目
-  - / `author`: 字符串类型，作者
-  - / `abstract`: 文档类型，摘要
-  - / `body`: 文档内容
-
-== ```typc template(title:"", author:"", abstract:[], body) => _body```
-
-- / 参数`title`: 标题字符串
-- / 参数`author`: 作者字符串
-- / 参数`abstract`: 摘要内容
-- / 参数`body`: 文档内容
-- / 返回值: 应用了模板之后的文档内容
-
-== Nestoc文档的代码框架
-
 每个Nestoc文档：
 
 - 必须提供函数```typc nestoc_fn```供其他Nestoc文档调用
@@ -99,10 +62,56 @@ title: "题目", author: "作者", abstract: [摘要], body: [
 则该typst文件仅是一个无法编译出pdf的模块。
 这个模块仅能用于嵌入其他模块。
 
-== 例子
 
-本文档提供了一个具体的Nestoc例子。
-本文档一共包含了4个模块。
+TODO: 说明nix
+
+= API
+
+Nestoc的所有功能围绕着函数```typc nestoc(nestoc_fn, heading_offset:0) => body```函数展开
+
+== ```typc nestoc(nestoc_fn, heading_offset:0, template:default_template) => body```
+
+- / 参数`nestoc_fn`: 为函数，其类型为```typc nestoc_fn(heading_offset:0) => nestoc_obj```：
+- / 参数`heading_offset`: 为int，表示给`nestoc_fn`的题目和标题施加`heading_offset`的偏移。
+  例如：
+  - / ```typc heading_offset:0```: 表示不偏移
+  - / ```typc heading_offset:1```: 表示`nestoc_fn`题目=>一级标题，`nestoc_fn`的一级标题=>二级标题，...
+  - / ```typc heading_offset:2```: 表示`nestoc_fn`题目=>二级标题，`nestoc_fn`的一级标题=>三级标题，...
+- / 参数```typc template:default_template```: 模板，其类型为：
+    ```typc template(title:"", author:"", abstract:[], body) => _body```。
+- / 返回值: 为文档内容
+
+== ```typc nestoc_fn(heading_offset:0) => nestoc_obj```
+
+- / 参数`heading_offset`: 同`nestoc`的`heading_offset`
+- / 返回值`nestoc_obj`: 为字典类型，有如下成员变量：
+  - / `title`: 字符串类型，文档的题目
+  - / `author`: 字符串类型，作者
+  - / `abstract`: 文档类型，摘要
+  - / `body`: 文档内容
+
+== ```typc template(title:"", author:"", abstract:[], body) => _body```
+
+- / 参数`title`: 标题字符串
+- / 参数`author`: 作者字符串
+- / 参数`abstract`: 摘要内容
+- / 参数`body`: 文档内容
+- / 返回值: 应用了模板之后的文档内容
+
+#{
+  import "com/nestemp/lib.typ.typ": nestoc_fn
+  nestoc(nestoc_fn, heading_offset: heading_offset+1)
+}
+
+= 例子
+
+本文档提供了一个具体的Nestoc例子，包含了4个模块：
+- 总文档：`doc/main.typ`
+- 父模块：`doc/parent/main.typ`
+- 子模块：`doc/parent/child/main.typ`
+- 孙模块：`doc/parent/child/grandchild/main.typ`
+
+这4个模块：
 - 每个模块均定义了自己的`nestoc_fn`函数。
 - 每个模块均调用了```typc nestoc(自己的nestoc_fn)```。
   这让该模块可以编译成独立的pdf文档。
@@ -131,26 +140,7 @@ title: "题目", author: "作者", abstract: [摘要], body: [
   )
 })
 
-#{
-  import "com/nestemp/lib.typ.typ": nestoc_fn
-  nestoc(nestoc_fn, heading_offset: heading_offset+1)
-}
-
-= Nestoc 能力展示
-
-用 Nestoc 的文档 `doc/` 作为例子，
-展示 Nestoc 的模块和嵌套的能力。
-
-Nestoc 的 `doc/` 目录包含了模块化的文档。
-其模块层次如下
-
-- 总文档：`./main.typ` => `./parent/main.pdf`
-- 父模块：`./parent/main.typ` => `./parent/main.pdf`
-- 子模块：`./parent/child/main.typ` => `./parent/child/main.pdf`
-- 孙模块：`./parent/child/grandchild/main.typ` => `./parent/child/grandchild/main.pdf`
-
-每个模块均可独立地编辑、编译生成pdf。
-当然每个模块也可以被嵌套到其他模块中，比如grandchild被嵌套到了child里；
+grandchild被嵌套到了child里；
 child被嵌套到了parent里；
 parent被嵌套到了这个总文档的下面。
 你可以仔细观察这些pdf文档，然后理解它们间的嵌套关系。
