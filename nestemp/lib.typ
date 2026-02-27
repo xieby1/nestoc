@@ -53,7 +53,7 @@
   theme: glossy.theme-academic + ( section: (title, body) => { body } )
 )
 
-#let template0(title:"", author:"", abstract:[], body) = {
+#let template0(title:"", author:"", abstract:[], compact:true, body) = {
   // https://guide.typst.dev/FAQ/chinese-remove-space
   let han-or-punct = "[-\p{sc=Hani}。．，、：；！‼？⁇⸺——……⋯⋯～–—·・‧/／「」『』“”‘’（）《》〈〉【】〖〗〔〕［］｛｝＿﹏●•]"
   show regex(han-or-punct + " "): it => {
@@ -81,18 +81,22 @@
 
   // This template is based on ilm
   // COVER
-  page(align(left + horizon, block(width: 90%)[
-    #text(3em)[*#title*]
-    #v(2em, weak: true)
-    #text(1.6em, author)
-    #v(2em, weak: true)
-    #block(width: 80%, abstract)
-  ]))
+  let cover(body) = {
+    if compact { body }
+    else { page(align(left + horizon, block(width: 90%, body))) }
+  }
+  cover({
+    text(3em)[*#title*]
+    v(2em, weak: true)
+    text(1.6em, author)
+    v(2em, weak: true)
+    block(width: 80%, abstract)
+  })
 
   // TOC
   context if counter(heading).final().at(0) > 0 {
     outline()
-    pagebreak()
+    if not compact { pagebreak() }
   }
 
   // BODY
@@ -111,7 +115,7 @@
     let has-bibs() = bibs.final().len() > 0
 
     context if has-glossaries() or has-images() or has-tables() or has-codes() or has-bibs() {
-      pagebreak()
+      if not compact { pagebreak() }
     }
     context if has-glossaries() {
       heading(numbering:none, "术语索引")
