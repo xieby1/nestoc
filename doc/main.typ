@@ -18,32 +18,6 @@ Nestoc 旨在构建一个支持文档嵌套（或称"模块化"）的 Typst 插�
 - / 模块: 每个章节均为独立、可编辑、可编译、可阅读的自包含文档。
 - / 嵌套: 所有章节组合时，标题、编号等元素将自动调整，形成协调一致的最终文档。
 
-= Nestoc 能力展示
-
-用 Nestoc 的文档 `doc/` 作为例子，
-展示 Nestoc 的模块和嵌套的能力。
-
-Nestoc 的 `doc/` 目录包含了模块化的文档。
-其模块层次如下
-
-- 总文档：`./main.typ` => `./parent/main.pdf`
-- 父模块：`./parent/main.typ` => `./parent/main.pdf`
-- 子模块：`./parent/child/main.typ` => `./parent/child/main.pdf`
-- 孙模块：`./parent/child/grandchild/main.typ` => `./parent/child/grandchild/main.pdf`
-
-每个模块均可独立地编辑、编译生成pdf。
-当然每个模块也可以被嵌套到其他模块中，比如grandchild被嵌套到了child里；
-child被嵌套到了parent里；
-parent被嵌套到了这个总文档的下面。
-你可以仔细观察这些pdf文档，然后理解它们间的嵌套关系。
-
-#{
-  // Can move `import` expression to `nestoc` function?
-  // No: typsts throw error: "cannot import from user-defined functions".
-  import "./parent/main.typ": nestoc_fn
-  nestoc(nestoc_fn, heading_offset: heading_offset+2)
-}
-
 = 使用
 
 TODO: 说明nix
@@ -161,6 +135,33 @@ title: "题目", author: "作者", abstract: [摘要], body: [
   import "../nestemp/doc/main.typ": nestoc_fn
   nestoc(nestoc_fn, heading_offset: heading_offset+1)
 }
+
+= Nestoc 能力展示
+
+用 Nestoc 的文档 `doc/` 作为例子，
+展示 Nestoc 的模块和嵌套的能力。
+
+Nestoc 的 `doc/` 目录包含了模块化的文档。
+其模块层次如下
+
+- 总文档：`./main.typ` => `./parent/main.pdf`
+- 父模块：`./parent/main.typ` => `./parent/main.pdf`
+- 子模块：`./parent/child/main.typ` => `./parent/child/main.pdf`
+- 孙模块：`./parent/child/grandchild/main.typ` => `./parent/child/grandchild/main.pdf`
+
+每个模块均可独立地编辑、编译生成pdf。
+当然每个模块也可以被嵌套到其他模块中，比如grandchild被嵌套到了child里；
+child被嵌套到了parent里；
+parent被嵌套到了这个总文档的下面。
+你可以仔细观察这些pdf文档，然后理解它们间的嵌套关系。
+
+#{
+  // Can move `import` expression to `nestoc` function?
+  // No: typsts throw error: "cannot import from user-defined functions".
+  import "./parent/main.typ": nestoc_fn
+  nestoc(nestoc_fn, heading_offset: heading_offset+2)
+}
+
 
 ])
 
