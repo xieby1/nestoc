@@ -1,10 +1,11 @@
-#import "../../../lib.typ": nestoc
+#import "../../../lib.typ": nestoc, nestemp
 #let nestoc_fn(
   heading_offset: 0,
 ) = (
 title: "子模块的题目",
 author: "xieby1",
 body: [
+#show: nestemp.set-secret-level.with(n:1)
 
 子模块被嵌入到父模块的题目之下。
 因此相对父模块，子模块的标题等级都会+1，

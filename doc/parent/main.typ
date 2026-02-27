@@ -1,10 +1,11 @@
-#import "../../lib.typ": nestoc
+#import "../../lib.typ": nestoc, nestemp
 #let nestoc_fn(
   heading_offset: 0,
 ) = (
 title: "父模块的题目",
 author: "xieby1",
 body: [
+#show: nestemp.set-secret-level.with(n:0)
 父模块被嵌套到了总文档中，以二级标题为基础。
 即各级标题偏移+2。
 其各级标题映射关系如下：

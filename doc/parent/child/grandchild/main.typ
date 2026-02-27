@@ -1,10 +1,11 @@
-#import "../../../../lib.typ": nestoc
+#import "../../../../lib.typ": nestoc, nestemp
 #let nestoc_fn(
   heading_offset: 0,
 ) = (
 title: [孙模块的题目],
 author: "xieby3",
 body: [
+#show: nestemp.set-secret-level.with(n:2)
 
 孙模块被嵌套到子模块中，当然间接地随着子模块被嵌套到了父模块和总文档中。
 其各级标题的映射关系如下：
