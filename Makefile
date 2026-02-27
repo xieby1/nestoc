@@ -27,7 +27,7 @@ test: $(addsuffix .test,${PDFs}) $(addsuffix .run,${SH_TESTs})
 %test.sh.run: %test.sh
 	bash $<
 
-publish: $(addprefix public/,${PDFs})
+publish: $(addprefix public/,${PDFs} ${MAIN_SVGs})
 public/%: %
 	mkdir -p $(@D)
 	cp $< $@
