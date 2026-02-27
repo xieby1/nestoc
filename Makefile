@@ -1,7 +1,8 @@
 .SECONDARY:
 
-MAIN_TYPs = $(shell find . -name "*main.typ") $(shell find . -name "*fail.typ")
-MAIN_PDFs = $(subst .typ,.pdf,${MAIN_TYPs})
+MAIN_TYPs = $(shell find . -name "*main.typ")
+FAIL_TYPs = $(shell find . -name "*fail.typ")
+PDFs = $(subst .typ,.pdf,${MAIN_TYPs} ${FAIL_TYPs})
 
 all: test
 
@@ -10,7 +11,7 @@ all: test
 	typst compile $< $@
 
 SH_TESTs = $(shell find . -name "test.sh")
-test: $(addsuffix .test,${MAIN_PDFs}) $(addsuffix .run,${SH_TESTs})
+test: $(addsuffix .test,${PDFs}) $(addsuffix .run,${SH_TESTs})
 
 %main.pdf.test: %main.pdf doc/check_regex_order.py %main.regex
 	pdftotext $< - | python3 $(filter-out $<,$^)
@@ -19,11 +20,11 @@ test: $(addsuffix .test,${MAIN_PDFs}) $(addsuffix .run,${SH_TESTs})
 %test.sh.run: %test.sh
 	bash $<
 
-publish: $(addprefix public/,${MAIN_PDFs})
+publish: $(addprefix public/,${PDFs})
 public/%: %
 	mkdir -p $(@D)
 	cp $< $@
 
 clean:
-	rm -f ${MAIN_PDFs}
+	rm -f ${PDFs}
 	rm -rf public/
