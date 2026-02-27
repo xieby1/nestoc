@@ -5,9 +5,10 @@
 title: [孙模块的题目],
 author: "xieby3",
 body: [
+#nestemp.add-bib(read(encoding:none, "./ref.bib"))
 #show: nestemp.set-secret-level.with(n:2)
 
-孙模块被嵌套到子模块中，当然间接地随着子模块被嵌套到了父模块和总文档中。
+孙模块 @grandchild0 被嵌套到子模块中，当然间接地随着子模块被嵌套到了父模块和总文档中。
 其各级标题的映射关系如下：
 
 #figure(caption: [孙模块题目/标题映射关系], table(

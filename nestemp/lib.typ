@@ -1,9 +1,11 @@
 /*typ*//* #import "/lib.typ": nestoc, nestemp; #let nestoc_fn(heading_offset:0) = (
-title: "Nestemp模板",
-author: "xieby1",
-abstract: [Nestoc的默认模板。],
-body: [
+  title: "Nestemp模板",
+  author: "xieby1",
+  abstract: [Nestoc的默认模板。],
+  body: [
 */
+
+// TODO: doc
 #let numbering(start:1, len:1, code) = {
   show raw.line: line => {
     let str_num = str(line.number + start - 1)
@@ -14,6 +16,15 @@ body: [
   code
 }
 
+/*typ*//*
+  = 参考文献管理
+
+  ```typ
+  #add-bib(read(encoding:none, "<xxx.bib>"))
+  ```
+
+  TODO
+*/
 #let bibs = state("__bibs", ())
 #let add-bib(path) = bibs.update(old => {
   if old == none { old =   (path,) }
@@ -23,6 +34,10 @@ body: [
 
 /*typ*//*
   = 秘密等级管理
+
+  ```typ
+  #show: set-secret-level.with(n:<secret-level>)
+  ```
 
   秘密等级分为4级，由不同颜色的页边标识：
 
