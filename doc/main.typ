@@ -65,38 +65,10 @@ title: "题目", author: "作者", abstract: [摘要], body: [
 
 TODO: 说明nix
 
-= API
-
-Nestoc的所有功能围绕着函数```typc nestoc(nestoc_fn, heading_offset:0) => body```函数展开
-
-== ```typc nestoc(nestoc_fn, heading_offset:0, template:default_template) => body```
-
-- / 参数`nestoc_fn`: 为函数，其类型为```typc nestoc_fn(heading_offset:0) => nestoc_obj```：
-- / 参数`heading_offset`: 为int，表示给`nestoc_fn`的题目和标题施加`heading_offset`的偏移。
-  例如：
-  - / ```typc heading_offset:0```: 表示不偏移
-  - / ```typc heading_offset:1```: 表示`nestoc_fn`题目=>一级标题，`nestoc_fn`的一级标题=>二级标题，...
-  - / ```typc heading_offset:2```: 表示`nestoc_fn`题目=>二级标题，`nestoc_fn`的一级标题=>三级标题，...
-- / 参数```typc template:default_template```: 模板，其类型为：
-    ```typc template(title:"", author:"", abstract:[], body) => _body```。
-- / 返回值: 为文档内容
-
-== ```typc nestoc_fn(heading_offset:0) => nestoc_obj```
-
-- / 参数`heading_offset`: 同`nestoc`的`heading_offset`
-- / 返回值`nestoc_obj`: 为字典类型，有如下成员变量：
-  - / `title`: 字符串类型，文档的题目
-  - / `author`: 字符串类型，作者
-  - / `abstract`: 文档类型，摘要
-  - / `body`: 文档内容
-
-== ```typc template(title:"", author:"", abstract:[], body) => _body```
-
-- / 参数`title`: 标题字符串
-- / 参数`author`: 作者字符串
-- / 参数`abstract`: 摘要内容
-- / 参数`body`: 文档内容
-- / 返回值: 应用了模板之后的文档内容
+#{
+  import "com/lib.typ.typ": nestoc_fn
+  nestoc(heading_offset:heading_offset+1, nestoc_fn)
+}
 
 #{
   import "com/nestemp/lib.typ.typ": nestoc_fn
