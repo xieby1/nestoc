@@ -152,10 +152,8 @@ Doccom要解决文档和代码分开而产生的问题：文档缺失、文档�
 
 == 例子
 
-// TODO: use label and refernce
-// [title <..>] will cause "occurs multiple times in the document" due to heading appears both in outline and body.
-“API”和“Nestemp模板”章节均采用了Doccom模式。
-以“API”为例，其采用的Doccom格式为：
+@chap:api 和 @chap:nestemp 均采用了Doccom模式。
+以 @chap:api 为例，其采用的Doccom格式为：
 
 ```typ
 /*typ*//*
@@ -165,7 +163,7 @@ Doccom要解决文档和代码分开而产生的问题：文档缺失、文档�
 ```
 
 只需要用正则表达式将"Here is the typst doc..."的内容抽取出来即可。
-“API”章节所涉及的`lib.typ`的源码如下：
+@chap:api 所涉及的`lib.typ`的源码如下：
 
 #nestemp.numbering(len:2, raw(block:true, lang:"typ", read("../lib.typ")))
 

@@ -1,5 +1,5 @@
 /*typ*//* #import "/lib.typ": nestoc, nestemp; #let nestoc_fn(heading_offset:0) = (
-  title: "Nestemp模板",
+  title: "Nestemp模板", title-label:<chap:nestemp>,
   author: "xieby1",
   abstract: [Nestoc的默认模板。],
   body: [
