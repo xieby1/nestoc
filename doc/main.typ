@@ -166,7 +166,7 @@ Doccom要解决文档和代码分开而产生的问题：文档缺失、文档�
 只需要用正则表达式将"Here is the typst doc..."的内容抽取出来即可。
 “API”章节所涉及的`lib.typ`的源码如下：
 
-#raw(block:true, lang:"typ", read("../lib.typ"))
+#nestemp.numbering(len:2, raw(block:true, lang:"typ", read("../lib.typ")))
 
 ])
 
