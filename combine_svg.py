@@ -122,6 +122,9 @@ if all_defs:
         combined += defs
     combined += '  </defs>\n'
 
+# Add white background
+combined += f'  <rect x="0" y="0" width="{total_width}" height="{total_height}" fill="white"/>\n'
+
 # Add all content
 for content in all_content:
     combined += content
