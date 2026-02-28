@@ -34,11 +34,11 @@
     = ```typc nestoc_fn(heading_offset:0) => nestoc_obj``` <chap:nestoc_fn>
 
     - / 参数`heading_offset`: 同`nestoc`的`heading_offset`
-    - / 返回值`nestoc_obj`: 为字典类型，有如下成员变量：
-      - / `title`: 字符串类型，文档的题目
-      - / `author`: 字符串类型，作者
-      - / `abstract`: 文档类型，摘要
-      - / `body`: 文档内容
+    - / 返回值`nestoc_obj`: `dict`类型，有如下成员变量：
+      - / `title`: `content`类型，文档的题目
+      - / `author`: `content`类型，作者
+      - / `abstract`: `content`类型，摘要
+      - / `body`: `content`类型，文档内容
   */
   let nestoc_obj = nestoc_fn(heading_offset: heading_offset)
   let body = nestoc_obj.remove("body")
@@ -46,10 +46,10 @@
     /*typ*//*
       = ```typc template0(title:"", author:"", abstract:[], body) => styled_body``` <chap:template0>
 
-      - / 参数`title`: 标题字符串
-      - / 参数`author`: 作者字符串
-      - / 参数`abstract`: 摘要内容
-      - / 参数`body`: 文档内容
+      - / 参数`title`: 同`nestoc_obj.title`
+      - / 参数`author`: 同`nestoc_obj.author`
+      - / 参数`abstract`: 同`nestoc_obj.abstract`
+      - / 参数`body`: 同`nestoc_obj.body`
       - / 返回值: 应用了模板之后的文档内容
     */
     template0(..nestoc_obj, body)
