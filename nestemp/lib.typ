@@ -117,7 +117,7 @@
   theme: glossy.theme-academic + ( section: (title, body) => { body } )
 )
 
-#let template0(title:"", author:"", abstract:[], compact:true, body) = {
+#let template0(title:"", title-label:none, author:"", abstract:[], compact:true, body) = {
   // https://guide.typst.dev/FAQ/chinese-remove-space
   let han-or-punct = "[-\p{sc=Hani}。．，、：；！‼？⁇⸺——……⋯⋯～–—·・‧/／「」『』“”‘’（）《》〈〉【】〖〗〔〕［］｛｝＿﹏●•]"
   show regex(han-or-punct + " "): it => {
@@ -149,8 +149,13 @@
     if compact { body }
     else { page(align(left + horizon, block(width: 90%, body))) }
   }
+
+  show ref.where(form:"normal"): it => { if it.target==title-label {"本文"} else {it} }
   cover({
-    text(3em)[*#title*]
+    {
+      show figure: set align(start);
+      [#figure(kind:"title", supplement:none, text(3em)[*#title*]) #title-label]
+    }
     v(2em, weak: true)
     text(1.6em, author)
     v(2em, weak: true)
@@ -197,11 +202,11 @@
   }
 }
 
-#let templateN(heading_offset, title:"", author:"", abstract:[], body) = {
+#let templateN(heading_offset, title:"", title-label:none, author:"", abstract:[], body) = {
   grid(columns: (1fr, auto),
     // Naturally, it is better to write heading(title, depth:0)
     // But depth only supports positive integer.
-    heading(title, level: heading_offset),
+    [#heading(title, level:heading_offset) #title-label],
     text(fill: gray, author)
   )
   abstract

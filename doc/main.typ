@@ -53,8 +53,9 @@ title: "题目", author: "作者", abstract: [摘要], body: [
   )
 })
 
-- 第1-9行定义函数```typc nestoc_fn(heading_offset: 0) => nestoc_obj```。
-  返回的`nestoc_obj`的字典包含了`title`, `author`, `abstract`以及文档主体`body`。
+// TODO: move to doccom
+- 第1-9行定义函数```typc nestoc_fn(heading_offset: 0) => nestemp_args```。
+  返回的`nestemp_args`的字典包含了`title`, `author`, `abstract`以及文档主体`body`。
 - 第10-11行将上面定义的`nestoc_fn`传给`nestoc`函数。
   `nestoc`内部会进行标题级别的协调，然后调用`nestoc_fn`函数，最后返回处理好的文档主体。
 

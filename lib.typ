@@ -31,35 +31,31 @@
 #let nestoc(nestoc_fn, heading_offset: 0, template0: nestemp.template0, templateN: nestemp.templateN) = {
   /*typ*//*
     // TODO: remove indentation
-    = ```typc nestoc_fn(heading_offset:0) => nestoc_obj``` <chap:nestoc_fn>
+    = ```typc nestoc_fn(heading_offset:0) => nestemp_args``` <chap:nestoc_fn>
 
     - / 参数`heading_offset`: 同`nestoc`的`heading_offset`
-    - / 返回值`nestoc_obj`: `dict`类型，有如下成员变量：
-      - / `title`: `content`类型，文档的题目
+    - / 返回值`nestemp_args`: `dict`类型，有如下成员变量：
+      - / `title`: `content`类型，文档题目
+      - / `title-label`: `label`类型，文档题目的label
       - / `author`: `content`类型，作者
       - / `abstract`: `content`类型，摘要
       - / `body`: `content`类型，文档内容
   */
-  let nestoc_obj = nestoc_fn(heading_offset: heading_offset)
-  let body = nestoc_obj.remove("body")
+  let nestemp_args = nestoc_fn(heading_offset: heading_offset)
+  let body = nestemp_args.remove("body")
   if heading_offset == 0 {
     /*typ*//*
-      = ```typc template0(title:"", author:"", abstract:[], body) => styled_body``` <chap:template0>
-
-      - / 参数`title`: 同`nestoc_obj.title`
-      - / 参数`author`: 同`nestoc_obj.author`
-      - / 参数`abstract`: 同`nestoc_obj.abstract`
-      - / 参数`body`: 同`nestoc_obj.body`
+      = ```typc template0(title:"", title-label:none, author:"", abstract:[], body) => styled_body``` <chap:template0>
+      - / 参数: 同`nestemp_args`
       - / 返回值: 应用了模板之后的文档内容
     */
-    template0(..nestoc_obj, body)
+    template0(..nestemp_args, body)
   } else {
     /*typ*//*
       = ```typc templateN(heading_offset, title:"", author:"", abstract:[], body) => styled_body``` <chap:templateN>
-
-      比`templateN`多了参数`heading_offset`。其他参数含义一致。
+      - 比`templateN`多了参数`heading_offset`。其他参数含义一致。
     */
-    templateN(heading_offset, ..nestoc_obj, body)
+    templateN(heading_offset, ..nestemp_args, body)
   }
 }
 
