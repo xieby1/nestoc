@@ -41,7 +41,7 @@
            因为后者会报错"occurs multiple times in the document"，
            报错原因：heading在outline和body中各出现了一次。
            此外后者的没有给title/heading打上label，而是给content打上的label。
-      - / `author`: `content`类型，作者
+      - / `author`: `str`类型，作者
       - / `abstract`: `content`类型，摘要
       - / `body`: `content`类型，文档内容
   */
