@@ -11,55 +11,71 @@ Usage:
 Where regex_file contains one regex pattern per line.
 
 Pattern types:
-  - Regular patterns: wait for this pattern to match in sequence
-  - Fail patterns (prefix with !): fail immediately if any line matches
+  - Regular patterns: skip lines until this pattern matches, then advance
+  - Fail patterns (prefix with !): consume the next line; fail immediately if it matches
+
+Patterns are consumed one by one in the order they appear in the regex file.
+Each fail pattern checks exactly the next line of input, then advances regardless.
+Multiple consecutive fail patterns each check successive lines sequentially.
 
 Example regex_file:
     hello
     !error
+    !warning
     goodbye
-  This waits for "hello", then "goodbye", but fails if "error" appears anywhere.
+  After "hello" matches, the next line is checked against "!error" (fail if it matches),
+  then the following line is checked against "!warning" (fail if it matches),
+  then waits for "goodbye".
 """
 
 import sys
 import re
 
 
-def check_regex_order_line_by_line(regexes, fail_regexes):
+def check_regex_order_line_by_line(patterns):
     """
-    Check if regexes appear in order by reading stdin line by line.
-    Each line matches at most one regex.
+    Check patterns against stdin line by line using a unified sequential queue.
+
+    Each pattern is a tuple of ('match', compiled_regex, original_str) or
+    ('fail', compiled_regex, original_str).
+
+    Regular ('match') patterns: skip lines until one matches, then advance.
+    Fail ('fail') patterns: consume the next line; fail immediately if it matches,
+    advance to next pattern regardless.
 
     Args:
-        regexes: List of compiled regex patterns to match in order
-        fail_regexes: List of (compiled regex, original pattern) tuples that cause immediate failure
+        patterns: List of (kind, compiled_regex, original_str) tuples in queue order
 
     Returns:
-        True if all regexes match in order and no fail patterns match, False otherwise
+        True if all patterns are satisfied without failure, False otherwise
     """
-    current_regex_idx = 0
+    idx = 0
 
     for line in sys.stdin:
-        # Check fail patterns first - these cause immediate failure
-        for fail_regex, fail_pattern in fail_regexes:
-            if fail_regex.search(line):
-                print(f"Fail pattern matched: !{fail_pattern}", file=sys.stderr)
+        if idx >= len(patterns):
+            break
+
+        kind, regex, original = patterns[idx]
+        if kind == 'fail':
+            # Each fail pattern consumes exactly this one line
+            if regex.search(line):
+                print(f"Fail pattern matched: !{original}", file=sys.stderr)
                 print(f"Matched on line: {line.rstrip()}", file=sys.stderr)
                 return False
+            idx += 1
+        else:
+            # 'match' pattern: advance only when line matches
+            if regex.search(line):
+                idx += 1
 
-        # Check if the current line matches the current regex
-        if current_regex_idx < len(regexes):
-            if regexes[current_regex_idx].search(line):
-                current_regex_idx += 1
-
-                # If we've matched all regexes, we're done
-                if current_regex_idx == len(regexes):
-                    return True
-
-    # Check if we matched all regexes
-    if current_regex_idx < len(regexes):
-        print(f"Pattern {current_regex_idx} not found: {regexes[current_regex_idx].pattern}", file=sys.stderr)
-        return False
+    # At end of input: drain any remaining fail patterns (no line left to check)
+    while idx < len(patterns):
+        kind, regex, original = patterns[idx]
+        if kind == 'fail':
+            idx += 1
+        else:
+            print(f"Pattern {idx} not found: {regex.pattern}", file=sys.stderr)
+            return False
 
     return True
 
@@ -87,27 +103,21 @@ def main():
         print("Error: No regex patterns found in file", file=sys.stderr)
         sys.exit(1)
 
-    # Separate regular patterns from fail patterns (those starting with !)
-    regular_patterns = []
-    fail_patterns = []
-
-    for pattern in regex_patterns:
-        if pattern.startswith('!'):
-            # Strip the ! prefix for fail patterns
-            fail_patterns.append(pattern[1:])
-        else:
-            regular_patterns.append(pattern)
-
-    # Compile regexes
+    # Build unified pattern list preserving order from regex file
     try:
-        regexes = [re.compile(pattern) for pattern in regular_patterns]
-        fail_regexes = [(re.compile(pattern), pattern) for pattern in fail_patterns]
+        patterns = []
+        for raw in regex_patterns:
+            if raw.startswith('!'):
+                original = raw[1:]
+                patterns.append(('fail', re.compile(original), original))
+            else:
+                patterns.append(('match', re.compile(raw), raw))
     except re.error as e:
         print(f"Invalid regex pattern: {e}", file=sys.stderr)
         sys.exit(1)
 
     # Check if regexes appear in order
-    if check_regex_order_line_by_line(regexes, fail_regexes):
+    if check_regex_order_line_by_line(patterns):
         print("All regexes found in order")
         sys.exit(0)
     else:
